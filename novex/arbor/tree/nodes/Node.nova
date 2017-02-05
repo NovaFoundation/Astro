@@ -286,24 +286,6 @@ class Node implements Annotatable {
     public replace(Node toReplace, Node replacement) => false
     public validateTypes() => true
     
-    public parsePlaceholders() -> Bool =>
-        scope ?
-            scope.parsePlaceholders() :
-            true
-    
-    public parsePlaceholderChildren(NodeList<PlaceholderValue> nodes) -> Bool =>
-        scopeConsumer && scopeConsumer != this ?
-            scopeConsumer.parsePlaceholderChildren(nodes) :
-            nodes.children.all(child => {
-                if (scope) {
-                    scope.addChild(child)
-                    
-                    return child.parsePlaceholders()
-                }
-                
-                return false
-            }, false)
-    
     public writeAnnotationSeparator() => " "
     
     public writeAnnotations() =>

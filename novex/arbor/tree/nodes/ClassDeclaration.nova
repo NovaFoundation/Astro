@@ -275,10 +275,6 @@ class ClassDeclaration extends InstanceDeclaration implements Abstractable, Gene
         return true
     }
     
-    public parsePlaceholders() =>
-        fields.all({ _.parsePlaceholders() }, false) &
-        functions.all({ _.parsePlaceholders() }, false)
-    
     public writeHeader() =>
         "#identifier #{name}#writeGenericParameters() #writeExtension() #writeImplementedInterfaces()".replace(/\s+/, " ").trim()
     

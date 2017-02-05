@@ -74,10 +74,6 @@ class Scope extends NodeList {
     }
     
     public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node {
-        if (phase == 1) {
-            return PlaceholderValue.parse(input, parent, location)
-        }
-        
         Node node = null
         
         until (node) {
@@ -100,30 +96,6 @@ class Scope extends NodeList {
         return node
     }
     
-    public parsePlaceholders() =>
-        children.all(child => {
-            if (child.class.isOfType(PlaceholderValue)) {
-                var placeholder = (PlaceholderValue)child
-                
-                catchSyntaxErrors({
-                    var parsed = parseStatement(placeholder.value, child.parent, child.location, true)
-                    
-                    if (parsed) {
-                        children.replace(child, parsed)
-                        
-                        if (placeholder.nodes) {
-                            parsed.parsePlaceholderChildren(placeholder.nodes)
-                        }
-                        
-                        return parsed.parsePlaceholders()
-                    }
-                })
-                
-                return false
-            } else {
-                return true
-            }
-        }, false)
     
     printPrecedingWhitespace(Node child) =>
         LADDER_FORM.contains(child.class) ? " " : "\n"

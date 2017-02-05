@@ -2,7 +2,6 @@ package "novex/arbor/tree/nodes/variables"
 
 import "novex/arbor/tree/nodes/Node"
 import "novex/arbor/tree/nodes/Value"
-import "novex/arbor/tree/nodes/PlaceholderValue"
 import "novex/arbor/tree/nodes/functions/BodyFunction"
 import "novex/arbor/tree/nodes/operations/Assignable"
 import "novex/arbor/SyntaxErrorException"
@@ -98,10 +97,10 @@ class FieldDeclaration extends InstanceDeclaration implements Assignable {
             var node = new FieldDeclaration(parent, location)
             
             if (accessorValue) {
-                node.accessorValue = PlaceholderValue.parse(accessorValue, node, location)
+                node.accessorValue = Value.parse(accessorValue, node, location)
                 node.isTwoWayAccessor = twoWay
             } else if (initializationValue) {
-                node.initializationValue = PlaceholderValue.parse(initializationValue, node, location)
+                node.initializationValue = Value.parse(initializationValue, node, location)
             } else if (extraDeclarations) {
                 node.extraDeclarations = extraDeclarations.splitAtCommas()
             }
@@ -141,20 +140,6 @@ class FieldDeclaration extends InstanceDeclaration implements Assignable {
             return index
         }
     }
-    
-    parseAccessorValue() =>
-        accessorValue.class.isOfType(PlaceholderValue) ?
-            (accessorValue = Value.parse((PlaceholderValue)accessorValue)) != null :
-            true
-    
-    parseInitializationValue() =>
-        initializationValue.class.isOfType(PlaceholderValue) ?
-            (initializationValue = Value.parse((PlaceholderValue)initializationValue)) != null :
-            true
-    
-    public parsePlaceholders() =>
-        parseAccessorValue() &
-        parseInitializationValue()
     
     public writeInitializationValue() => initializationValue ? " = #initializationValue.toNova()" : ""
     public writeAccessorValue() =>

@@ -83,12 +83,10 @@ class Value extends Node {
         var node = null
         
         until (node.class.isOfType(Value)) {
-            node = Variable.findVariable(input, parent, location)
             node = Cast.parse(input, parent, location, require)
             node = Priority.parse(input, parent, location, require)
             node = Accessible.parseDotAccess(input, parent, require)
             node = Literal.parse(input, parent, location, require)
-            node = StaticClassReference.parse(input, parent, location, require)
             node = NumericRange.parse(input, parent, location, require)
             node = ArrayInstantiation.parse(input, parent, location, require)
             node = Instantiation.parse(input, parent, location, require)
@@ -103,9 +101,6 @@ class Value extends Node {
         
         return node
     }
-    
-    public static parse(PlaceholderValue placeholder, Bool require = true) =>
-        parse(placeholder.value, placeholder.parent, placeholder.location, require)
     
     public parseType(String input) =>
         input && (type = Type.parse(input, this))

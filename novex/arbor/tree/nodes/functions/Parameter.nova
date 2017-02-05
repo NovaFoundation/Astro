@@ -1,8 +1,8 @@
 package "novex/arbor/tree/nodes/functions"
 
+import "novex/arbor/InvalidParseException"
 import "novex/arbor/tree/nodes/Node"
 import "novex/arbor/tree/nodes/Value"
-import "novex/arbor/tree/nodes/PlaceholderValue"
 import "novex/arbor/tree/nodes/variables/LocalDeclaration"
 import "novex/arbor/tree/nodes/functions/closures/ClosureDeclaration"
 import "novex/arbor/util/Location"
@@ -61,18 +61,13 @@ class Parameter extends LocalDeclaration {
         if (declaration) {
             var node = new Parameter(parent, location)
             
-            if (defaultValue) {
-                node.defaultValue = PlaceholderValue.parse(defaultValue, node, location, require)
+            if (defaultValue && !(node.defaultValue = Value.parse(defaultValue, node, location, require))) {
+                toss new InvalidParseException("Failed to parse default value '#defaultValue' for parameter '#input'", node)
+            } else {
+                return (Parameter)declaration.cloneTo(node)
             }
-            
-            return (Parameter)declaration.cloneTo(node)
         }
     }
-    
-    public parsePlaceholders() =>
-        defaultValue.class.isOfType(PlaceholderValue) ?
-            (defaultValue = Value.parse((PlaceholderValue)defaultValue)) != null :
-            true
     
     public cloneTo(Parameter other) => other {
         super.cloneTo(other)

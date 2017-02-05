@@ -5,7 +5,6 @@ import "novex/arbor/InvalidParseException"
 import "novex/arbor/util/Location"
 import "novex/arbor/tree/nodes/Node"
 import "novex/arbor/tree/nodes/Type"
-import "novex/arbor/tree/nodes/PlaceholderValue"
 import "novex/arbor/tree/nodes/NodeList"
 import "novex/arbor/tree/nodes/functions/FunctionDeclaration"
 import "novex/arbor/tree/nodes/variables/VariableDeclaration"
@@ -37,19 +36,6 @@ class Instantiation extends FunctionCall {
         
         objectNotation.addChild(node)
     }
-    
-    public parsePlaceholderChildren(NodeList<PlaceholderValue> nodes) -> Bool =>
-        nodes.children.all(placeholder => {
-            addChild(placeholder)
-            
-            var property = parseStatement(placeholder.value, objectNotation)
-            
-            if (property) {
-                objectNotation.replace(placeholder, property)
-            }
-            
-            return property != null
-        }, false)
     
     public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node => null {
         var node = ObjectNotationProperty.parse(input, parent, location, require)

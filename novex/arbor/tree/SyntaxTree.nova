@@ -142,26 +142,6 @@ class SyntaxTree {
         phase = 2
     }
     
-    public parseStatements() {
-        root.files.forEach(file => {
-            Console.log("Parsing placeholders for file '#file'")
-            
-            if (!file.classes.all({
-                try {
-                    return _.parsePlaceholders()
-                } catch (SyntaxErrorException e) {
-                    Console.log("Error: #e.message")
-                    
-                    return false
-                }
-            }, false)) {
-                Console.writeLine("failed to parse placeholders for file '#file'")
-            }
-        })
-        
-        phase = 4
-    }
-    
     public static searchAnnotations(var String statement) -> AnnotationSearchResult {
         let result = new AnnotationSearchResult(statement)
         var annotation = Annotation.parse(input: statement, require: false)

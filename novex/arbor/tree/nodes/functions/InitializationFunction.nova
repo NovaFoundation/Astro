@@ -5,7 +5,6 @@ import "novex/arbor/tree/nodes/Type"
 import "novex/arbor/tree/nodes/Scope"
 import "novex/arbor/tree/nodes/Return"
 import "novex/arbor/tree/nodes/Value"
-import "novex/arbor/tree/nodes/PlaceholderValue"
 import "novex/arbor/util/Location"
 import "novex/arbor/SyntaxMessage"
 

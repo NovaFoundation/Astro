@@ -137,10 +137,6 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
     
     public parseType(String input) =>
         input.count == 0 || super.parseType(input)
-    
-    public parsePlaceholders() =>
-        parameters.all({ _.parsePlaceholders() }, false) &
-        super.parsePlaceholders()
         
     [Override]
     public writeAnnotationSeparator() => "\n"
