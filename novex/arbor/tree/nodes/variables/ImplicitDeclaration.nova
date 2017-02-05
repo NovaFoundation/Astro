@@ -72,15 +72,6 @@ class ImplicitDeclaration extends LocalDeclaration {
         }
     }
     
-    [Override]
-    public onAssigned(Value value) {
-        if (implicitReference == DEFAULT_IMPLICIT_REFERENCE) {
-            implicitReference = value
-        } else { // TODO: get common between newly assigned and existing type
-            implicitReference = value
-        }
-    }
-    
     public writeType() => ""
     
     public cloneTo(ImplicitDeclaration other) => other {
