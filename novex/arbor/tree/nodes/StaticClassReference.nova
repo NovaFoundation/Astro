@@ -43,6 +43,4 @@ class StaticClassReference extends Identifier implements Accessible {
         parent.parentFile.imports.any({ _.className.equals(input) }) ?
             new StaticClassReference(parent, location, input) :
             null
-    
-    public writeNova() => super.writeNova() + writeArrayAccess() + writeAccessedNodes()
 }
