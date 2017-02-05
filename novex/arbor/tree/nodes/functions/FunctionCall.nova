@@ -120,33 +120,6 @@ class FunctionCall extends Variable {
     validateDeclarationCompatible() =>
         declaration != null
     
-    /// Search for the declaration of the constructor if the function call is 'this(...)'
-    searchThisDeclaration() => false {
-        if (name == "this" && !isAccessed) {
-            var constructor = parentClass.constructors.firstWhere({ true })
-            
-            if (constructor) {
-                declaration = constructor
-                
-                return true
-            }
-        }
-    }
-    
-    searchFunctionDeclaration() => false {
-        if (let ref = referenceClass) {
-            if (let func = ref.findFunction(name)) {
-                declaration = func
-                
-                return true
-            } else {
-                toss new InvalidParseException("Could not find declaration for function call '#this' in class '#ref'", this)
-            }
-        } else {
-            toss new InvalidParseException("Could not get reference class for function call '#this'", this)
-        }
-    }
-    
     public cloneTo(FunctionCall other) => other {
         super.cloneTo(other)
         

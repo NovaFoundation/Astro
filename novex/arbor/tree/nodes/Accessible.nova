@@ -79,11 +79,6 @@ trait Accessible extends Value {
         no set
     }
     
-    visible ClassDeclaration referenceClass =>
-        isAccessed ?
-            accessingNode.typeClass :
-            parentClass
-    
     /**
      * Get whether this specified identifier node was accessed through
      * the dot operator of another Identifier.

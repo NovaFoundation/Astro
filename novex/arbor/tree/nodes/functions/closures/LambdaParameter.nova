@@ -12,25 +12,6 @@ import "novex/arbor/tree/nodes/functions/FunctionCall"
 import "novex/arbor/util/CompilerStringFunctions"
 
 class LambdaParameter extends Parameter {
-    visible Parameter sourceParameter {
-        get {
-            var parameters = (ParameterList)parent
-            var index = parameters.count
-            var lambda = parameters.parentLambda
-            var closure = lambda.closureDeclaration
-            
-            if (closure) {
-                var sourceParameters = closure.parameters
-                
-                return sourceParameters && sourceParameters.count > index ? sourceParameters[index] : null
-            }
-            
-            return null
-        }
-        
-        no set
-    }
-    
     /// Create a new LambdaParameter node.
     /// 
     /// #exampleInputs
@@ -64,24 +45,8 @@ class LambdaParameter extends Parameter {
             return (LambdaParameter)parameter.cloneTo(node)
         } else if (!input.isIdentifier) {
             toss new InvalidParseException("Invalid lambda parameter name '#input' given", node)
-        } else if (!node.parseFromSourceParamter(input)) {
-            toss new InvalidParseException("Could not parse lambda parameter '#input'", node)
         } else {
             return node
         }
-    }
-    
-    parseFromSourceParamter(String name) => false {
-        var source = sourceParameter
-        
-        if (source) {
-            source.cloneTo(this)
-            
-            this.name = name
-            
-            return true
-        }
-        
-        toss new InvalidParseException("Could not find corresponding closure parameter for lambda parameter '#name'", this)
     }
 }

@@ -27,27 +27,6 @@ class LambdaExpression extends Value implements CallableFunction {
     visible Int index =>
         parentFunctionCall.arguments.indexOf(this, defaultReturnValue: parentFunctionCall.arguments.count)
     
-    visible ClosureDeclaration closureDeclaration =>
-        parentFunctionCall.function ?
-            (ClosureDeclaration)parentFunctionCall.function.parameters[index] :
-            inferredClosureDeclaration
-    
-    visible FunctionDeclaration inferredFunctionDeclaration {
-        get {
-            ClassDeclaration reference = parentFunctionCall.referenceClass
-            var similar = reference?.functions.filter({ _.name.equals(parentFunctionCall.name) })
-            
-            return null
-        }
-        
-        no set
-    }
-    
-    visible ClosureDeclaration inferredClosureDeclaration =>
-        inferredFunctionDeclaration ?
-            inferredFunctionDeclaration.parameters[index] :
-            null
-    
     visible LambdaExpression parentLambda => this
     
     public Scope scope <=> scope
