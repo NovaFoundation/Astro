@@ -3,6 +3,8 @@ package "novex/arbor/tree/nodes"
 import "novex/arbor/SyntaxErrorException"
 import "novex/arbor/util/Location"
 
+import "novex/arbor/util/CompilerStringFunctions"
+
 /// @Value extension that represents 
 ///
 /// author: Braden Steffaniak
@@ -37,10 +39,8 @@ class Identifier extends Value {
     ///           be parsed.
     /// return:   The parsed Identifier node, if successful; null otherwise.
     public static parse(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Identifier => null {
-        if (true) {
-            Identifier node = new Identifier(parent, location)
-            
-            return node
+        if (input.isIdentifier) {
+            return new Identifier(parent, location, input)
         }
     }
     
