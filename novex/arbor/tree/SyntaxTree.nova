@@ -2,6 +2,7 @@ package "novex/arbor/tree"
 
 import "nova/datastruct/list/Stack"
 import "nova/datastruct/list/List"
+import "nova/datastruct/list/EmptyStackException"
 
 import "novex/arbor/SyntaxMessage"
 import "novex/arbor/Arbor"
@@ -126,10 +127,14 @@ class SyntaxTree {
                     parents.push(node)
                 }
                 if (statements.endsScope) {
-                    for (e in 0..statements.scopesEnded) {
-                        if (!parents.isEmpty) {
-                            parents.pop()
+                    try {
+                        for (e in 0..statements.scopesEnded) {
+                            if (!parents.isEmpty) {
+                                parents.pop()
+                            }
                         }
+                    } catch (EmptyStackException ex) {
+                        Console.log("Too many ending braces in file '#file'")
                     }
                 }
             }
