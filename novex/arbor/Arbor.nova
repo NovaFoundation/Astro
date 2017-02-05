@@ -48,66 +48,6 @@ class Arbor {
             
             let target = "c"
             
-//             args = [
-//                 "../Arbor",
-// 				"../Misc/example",
-// 				"../Misc/stabilitytest", 
-// 				"-output-directory", "../NovaArborOutput/#target",
-// 				"-package-output-directory", "nova", "../StandardLibrary/#target",
-// //				"-dir", formatPath(directory + "../example"),
-// //				"-dir", formatPath(directory + "../stabilitytest"),
-// //				"-run",
-// //				"-csource",
-// 				"-formatc",
-// 				//testClasses ? "-v" : "",
-// 				"-v",
-// //				"-gcc",
-// //				"-tcc",
-// //				"-small",
-// //				"-cargs",
-// //				"-keepc",
-// 				"-single-thread",
-// 				"-single-file",
-// 				"-main",
-// //				"example/Lab",
-// //				"stabilitytest/StabilityTest",
-// //				"example/SvgChart",
-// //				"example/HashMapDemo",
-// //				"example/HashSetDemo",
-// 				"Arbor/Arbor",
-// //				"-nogc",
-// //				"-no-c-output",
-// //				"-dry",
-// //				"-no-notes",
-// //				"-no-warnings",
-// //				"-no-errors",
-// 				"-no-optimize",
-// 				"-target", target,
-// //				"-library",
-//             ]
-            
-            let myString = "hey this is my string"
-            
-            // Async.execute({
-            //     Console.log("INSIDE THREAD... ABOUT TO WAIT")
-                
-            //     external {
-            //         printf("Before %p %p\n", #{myString}, context);
-            //     }
-                
-            //     Thread.sleep(2000)
-                
-            //     external {
-            //         printf("After %p %p\n", #{myString}, context);
-            //     }
-                
-            //     Console.log("After waiting....................!")
-            //     Console.log("my string: #myString")
-            // })
-            
-            // Console.log("Press enter to begin...")
-            // Console.waitForEnter()
-            
             let parentDir = new File(args.firstOr("../../../tempstd"))
             
             let parseTimer = new Timer()
@@ -115,7 +55,9 @@ class Arbor {
             let compileTimer = new Timer().start()
             let fileTimer = new Timer().start()
             
-            files = parentDir.getChildFiles(true).filter({ _.extension.toLowerCase() == ".nova" }).map({ new NovaFile(_, program) })
+            files = parentDir.getChildFiles(true)
+                .filter({ _.extension.toLowerCase() == ".nova" })
+                .map({ new NovaFile(_, program) })
             
             fileTimer.stop()
             
@@ -125,8 +67,6 @@ class Arbor {
                 parseTimer.start()
                 
                 tree.formTree()
-                tree.validateTypes()
-                tree.parseStatements()
                 
                 parseTimer.stop()
                 
@@ -156,8 +96,6 @@ class Arbor {
             if (System.overheadTimer.iterations > 0) {
                 Console.writeLine("Nova overhead timer: #{System.overheadTimer.duration}ms over #{System.overheadTimer.iterations} iterations")
             }
-            
-            //Console.writeLine("Args: #args")
         }
         
         return tree
