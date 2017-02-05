@@ -2,6 +2,7 @@ package "novex/arbor/tree/nodes"
 
 import "novex/arbor/SyntaxErrorException"
 import "novex/arbor/util/Location"
+import "novex/arbor/tree/nodes/operations/Assignable"
 
 import "novex/arbor/util/CompilerStringFunctions"
 
@@ -10,7 +11,7 @@ import "novex/arbor/util/CompilerStringFunctions"
 /// author: Braden Steffaniak
 /// since: 
 /// version: 
-class Identifier extends Value {
+class Identifier extends Value implements Accessible, Assignable {
     public String name
     
     /// Create a new Identifier node.
@@ -44,7 +45,7 @@ class Identifier extends Value {
         }
     }
     
-    public writeNova() => name
+    public writeNova() => name + writeArrayAccess() + writeAccessedNodes()
     
     public cloneTo(Identifier other) => other {
         super.cloneTo(other)
