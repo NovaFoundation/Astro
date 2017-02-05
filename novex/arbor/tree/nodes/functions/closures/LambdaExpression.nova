@@ -136,7 +136,7 @@ class LambdaExpression extends Value implements CallableFunction {
     
     writeParameterClause() =>
         parameters.count > 0 ?
-            writeParameters() + " -> " :
+            writeParameters() + " => " :
             ""
     
     public writeNova() =>
