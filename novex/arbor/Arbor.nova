@@ -31,14 +31,6 @@ class Arbor {
     
     var NovaFile[] files
     
-    public static main(String[] args) {
-        let c = new Arbor()
-        
-        c.compile(args.skip(1))
-        
-        Console.waitForEnter()
-    }
-    
     public construct() {
         
     }
