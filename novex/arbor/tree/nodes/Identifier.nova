@@ -17,7 +17,7 @@ class Identifier extends Value {
     /// 
     /// parent:   The parent of the Identifier node.
     /// location: The location of the input text in the source file.
-    public construct(Node parent = null, Location location = Location.INVALID) {
+    public construct(Node parent = null, Location location = Location.INVALID, public String name = null) {
         super(parent, location)
     }
     
