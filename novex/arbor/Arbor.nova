@@ -35,8 +35,13 @@ class Arbor {
         
     }
     
-    public pure compile(String[] args) {
+    public build(String[] args) -> SyntaxTree {
         String directory = FileUtils.getWorkingDirectoryPath() + "/"
+        
+        let annotationTypes = Class.ALL.filter({ _.isOfType(Annotation) })
+        
+        let program = new Program()
+        let tree = new SyntaxTree(this, program)
         
         if (DEBUG) {
             testClasses()
@@ -103,11 +108,6 @@ class Arbor {
             // Console.log("Press enter to begin...")
             // Console.waitForEnter()
             
-            let annotationTypes = Class.ALL.filter({ _.isOfType(Annotation) })
-            
-            let program = new Program()
-            let tree = new SyntaxTree(this, program)
-            
             let parentDir = new File(args.firstOr("../../../tempstd"))
             
             let parseTimer = new Timer()
@@ -159,6 +159,8 @@ class Arbor {
             
             //Console.writeLine("Args: #args")
         }
+        
+        return tree
     }
     
     testClasses() {
