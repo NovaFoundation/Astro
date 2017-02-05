@@ -102,16 +102,18 @@ class LambdaExpression extends Value implements CallableFunction {
         var operation = findOperation(input)
         
         if (operation) {
-            /*if (operation.count > 0) {
+            if (operation.count > 0) {
                 var statements = operation.getStatements(new Stack([this]))
                 
                 for (statement in statements) {
-                    scope.addChild(PlaceholderValue.parse(statement, scope))
+                    if (let node = scope.parseStatement(statement, this)) {
+                        scope.addChild(node)
+                    } else {
+                        
+                    }
                 }
-                
-                scope.parsePlaceholders()
             }
-            */
+            
             return true
         }
     }
