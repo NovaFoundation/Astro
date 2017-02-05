@@ -75,33 +75,12 @@ class Assignment extends Operation {
     public static findAssignment(String input, Int assignmentIndex) =>
         input.substring(assignmentIndex + 1).trim()
     
-    parseAssignedNode(String input) -> Bool {
-        LocalDeclaration declaration = null
-        
-        until (declaration) {
-            declaration = ImplicitDeclaration.parse(input, this, location, require: false)
-            declaration = LocalDeclaration.parse(input, this, location, require: false)
+    parseAssignedNode(String input) => assigned {
+        until (assigned) {
+            assigned = ImplicitDeclaration.parse(input, this, location, require: false)
+            assigned = LocalDeclaration.parse(input, this, location, require: false)
+            assigned = Value.parse(input, this, location, require: false)
         }
-        
-        if (declaration) {
-            assigned = declaration
-            
-            return true
-        } else {
-            var value = Value.parse(input, this, location, require: false)
-            
-            if (value) {
-                if (value.isAssignable) {
-                    assigned = value
-                    
-                    return true
-                } else {
-                    SyntaxMessage.error("#value.nodeType '#input' is not assignable", value)
-                }
-            }
-        }
-        
-        return false
     }
     
     parseAssignment(String input) =>
