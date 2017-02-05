@@ -19,6 +19,10 @@ class ControlStructure extends Node {
         this.scope = new Scope(this, location)
     }
     
+    public addChild(Node child) {
+        scope.children.add(child)
+    }
+    
     public generateTemporaryScopeNode() -> Node {
         return new Scope(this)
     }
