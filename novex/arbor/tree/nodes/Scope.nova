@@ -88,6 +88,9 @@ class Scope extends NodeList {
         return node
     }
     
+    public generateTemporaryScopeNode() -> Node {
+        return new Scope(this)
+    }
     
     printPrecedingWhitespace(Node child) =>
         LADDER_FORM.contains(child.class) ? " " : "\n"

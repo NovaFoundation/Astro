@@ -1,5 +1,6 @@
 package "novex/arbor/tree/nodes/functions"
 
+import "novex/arbor/InvalidParseException"
 import "novex/arbor/tree/nodes/Node"
 import "novex/arbor/tree/nodes/Type"
 import "novex/arbor/tree/nodes/Scope"
@@ -103,6 +104,8 @@ class BodyFunction extends FunctionDeclaration {
         }
     }
     
+    public generateTemporaryScopeNode() -> Node {
+        return new Scope(this)
     }
     
     public writeReturnType() =>
