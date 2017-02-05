@@ -26,18 +26,9 @@ extension CompilerStringFunctions {
     
     static Char[] WORD_BOUNDARIES = " \t\n\r-+~!=%^&|*/\\><,\"'[]{};:?()".chars.toCharArray()
     
-    public Bool String.isIdentifier {//=> count > 0 && matches(/[A-Za-z_][A-Za-z0-9_]*/)
-        get { return count > 0 && matches(/[A-Za-z_][A-Za-z0-9_]*/) }
-        no set
-    }
-    public Bool String.isNumber {//=> count > 0 && matches(/[A-Za-z_][A-Za-z0-9_]*/)
-        get { return count > 0 && matches(/-?[0-9]+/) }
-        no set
-    }
-    public Bool String.isBool {//=> count > 0 && matches(/[A-Za-z_][A-Za-z0-9_]*/)
-        get { return this == "true" || this == "false" }
-        no set
-    }
+    public Bool String.isIdentifier => count > 0 && matches(/[A-Za-z_][A-Za-z0-9_]*/)
+    public Bool String.isNumber => count > 0 && matches(/-?[0-9]+/)
+    public Bool String.isBool => this == "true" || this == "false"
     
     public getStatements(String this, Stack<Node> parents) =>
         new StatementIterator(this, parents)
