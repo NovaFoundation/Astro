@@ -19,6 +19,10 @@ class ControlStructure extends Node {
         this.scope = new Scope(this, location)
     }
     
+    public generateTemporaryScopeNode() -> Node {
+        return new Scope(this)
+    }
+    
     public cloneTo(ControlStructure other) => other {
         super.cloneTo(other)
         
