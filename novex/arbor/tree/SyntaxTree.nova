@@ -19,8 +19,6 @@ import "novex/arbor/util/CompilerStringFunctions"
 class SyntaxTree {
     visible Program root
     
-    visible var Byte phase
-    
     Stack<Annotation> pendingAnnotations
     Stack<Node> parents
     
@@ -31,8 +29,6 @@ class SyntaxTree {
     public construct(Arbor compiler, Program root) {
         pendingAnnotations = new Stack()
         parents = new Stack()
-        
-        phase = 1
         
         this.compiler = compiler
         this.root = root
@@ -145,8 +141,6 @@ class SyntaxTree {
                 SyntaxMessage.error("Missing ending brace", file, throwException: false)
             }
         })
-        
-        phase = 2
     }
     
     public static searchAnnotations(var String statement) -> AnnotationSearchResult {
