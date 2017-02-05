@@ -61,10 +61,6 @@ class Assignment extends Operation {
             if (node.parseAssignedNode(findAssigned(input, assignmentIndex)) && node.parseAssignment(findAssignment(input, assignmentIndex))) {
                 node.operators.add(new Operator(node, location, "="))
                 
-                if (node.assigned.class.isOfType(VariableDeclaration)) {
-                    node.parentScope.declarations.add((VariableDeclaration)node.assigned)
-                }
-                
                 ((Assignable)node.assigned).onAssigned(node.assignment)
                 ((Assignable)node.assignment).onAssignedTo(node.assignedDeclaration)
                 

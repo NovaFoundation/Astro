@@ -59,7 +59,7 @@ class ObjectNotationProperty extends Assignment {
     }
     
     parseAssignedNode(String input) => false {
-        var variable = Variable.findVariable(input, parent)
+        var variable = Value.parse(input, parent)
         
         if (variable) {
             assigned = variable

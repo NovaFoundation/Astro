@@ -72,10 +72,6 @@ class FunctionCall extends Variable {
             
             if (!node.parseArguments(arguments)) {
                 toss new InvalidParseException("Unable to parse arguments '#arguments'", node)
-            } else if (!declaration && !node.searchDeclaration()) {
-                toss new InvalidParseException("Could not find declaration for function '#node'", node)
-            } else if (declaration && !node.validateDeclarationCompatible()) {
-                toss new InvalidParseException("Given declaration '#declaration' is not compatible with function call '#node'", node)
             } else {
                 return node
             }
@@ -123,21 +119,6 @@ class FunctionCall extends Variable {
     
     validateDeclarationCompatible() =>
         declaration != null
-    
-    searchDeclaration() =>
-        searchClosureDeclaration() ||
-        searchThisDeclaration() ||
-        searchFunctionDeclaration()
-    
-    searchClosureDeclaration() => false {
-        var variable = parent.findVariableDeclaration(name)
-        
-        if (variable.class.isOfType(ClosureDeclaration)) {
-            declaration = (VariableDeclaration)variable
-            
-            return true
-        }
-    }
     
     /// Search for the declaration of the constructor if the function call is 'this(...)'
     searchThisDeclaration() => false {

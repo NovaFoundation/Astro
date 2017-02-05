@@ -30,18 +30,6 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
         parameterList = new ParameterList(this)
     }
     
-    public findVariableDeclaration(String name, Bool searchAncestors = true) -> VariableDeclaration {
-        if (objectReference && objectReference.name.equals(name)) {
-            return objectReference
-        }
-        
-        if (let parameter = parameters.firstWhere({ _.name.equals(name) })) {
-            return parameter
-        }
-        
-        return super.findVariableDeclaration(name, searchAncestors)
-    }
-    
     /// Parse the given input into a FunctionDeclaration node. If the input cannot be parsed
     /// into a FunctionDeclaration node, null is returned.
     /// 

@@ -31,14 +31,6 @@ class ForEachLoop extends Loop {
         super(parent, location)
     }
     
-    public findVariableDeclaration(String name, Bool searchAncestors = true) -> VariableDeclaration {
-        if (variable.name == name) {
-            return variable
-        }
-        
-        return super.findVariableDeclaration(name, searchAncestors)
-    }
-    
     /// Parse the given input into a ForEachLoop node. If the input cannot be parsed
     /// into a ForEachLoop node, null is returned.
     /// 

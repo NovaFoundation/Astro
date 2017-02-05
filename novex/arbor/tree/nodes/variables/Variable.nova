@@ -26,18 +26,6 @@ class Variable extends Identifier implements Accessible, Assignable {
         this.declaration = declaration
     }
     
-    public static findVariable(String name, Node parent, Location location = parent.location) -> Variable => null {
-        if (name.isIdentifier) {
-            var declaration = parent.findVariableDeclaration(name)
-            
-            if (declaration) {
-                return new Variable(parent, location, declaration)
-            } else {
-                toss new InvalidParseException("Could not find declaration for identifier '#name'")
-            }
-        }
-    }
-    
     [Override]
     public onAssigned(Value value) {
         ((Assignable)declaration).onAssigned(value)

@@ -215,22 +215,6 @@ class Node implements Annotatable {
             new ValidationResult(this)*/
     }
     
-    public findVariableDeclaration(String name, Bool searchAncestors = true) -> VariableDeclaration {
-        if (containsScope) {
-            let declaration = scope.declarations.firstWhere({ _.name.equals(name) })
-            
-            if (declaration) {
-                return declaration
-            }
-        }
-        
-        if (searchAncestors && parent) {
-            return parent.findVariableDeclaration(name, searchAncestors)
-        }
-        
-        return null
-    }
-    
     public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node {
         return parentWithScope?.parseStatement(input, parent, location, require)
     }

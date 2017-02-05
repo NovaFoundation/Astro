@@ -65,16 +65,6 @@ class LambdaExpression extends Value implements CallableFunction {
         this.parameterList = new ParameterList(this, location)
     }
     
-    public findVariableDeclaration(String name, Bool searchAncestors = true) -> VariableDeclaration {
-        var parameter = parameters.firstWhere({ _.name.equals(name) })
-        
-        if (parameter) {
-            return parameter
-        }
-        
-        return super.findVariableDeclaration(name, searchAncestors)
-    }
-    
     /// Parse the given input into a LambdaExpression node. If the input cannot be parsed
     /// into a LambdaExpression node, null is returned.
     /// 
@@ -133,7 +123,7 @@ class LambdaExpression extends Value implements CallableFunction {
         var operation = findOperation(input)
         
         if (operation) {
-            if (operation.count > 0) {
+            /*if (operation.count > 0) {
                 var statements = operation.getStatements(new Stack([this]))
                 
                 for (statement in statements) {
@@ -142,7 +132,7 @@ class LambdaExpression extends Value implements CallableFunction {
                 
                 scope.parsePlaceholders()
             }
-            
+            */
             return true
         }
     }

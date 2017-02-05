@@ -89,24 +89,6 @@ class ClassDeclaration extends InstanceDeclaration implements Abstractable, Gene
             (!argumentTypes || func.compatibleArguments(argumentTypes))
         })
     
-    public findVariableDeclaration(String name, Bool searchAncestors = true) -> VariableDeclaration {
-        return findVariableDeclaration(name, searchAncestors, true)
-    }
-    
-    public findVariableDeclaration(String name, Bool searchAncestors = true, Bool searchExtensions = true) -> VariableDeclaration {
-        var field = fields.firstWhere({ _.name.equals(name) })
-        
-        if (field) {
-            return field
-        }
-        
-        if (searchExtensions) {
-            
-        }
-        
-        return super.findVariableDeclaration(name, searchAncestors)
-    }
-    
     public findFunction(String name, Bool searchAncestors = true) -> FunctionDeclaration => null {
         FunctionDeclaration function
         
