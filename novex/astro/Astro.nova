@@ -1,0 +1,107 @@
+package "novex/astro"
+
+import "nova/io/File"
+import "nova/datastruct/list/Stack"
+import "nova/datastruct/list/List"
+import "nova/datastruct/list/ImmutableArray"
+import "nova/time/Timer"
+
+import "novex/astro/util/OS"
+import "novex/astro/util/FileUtils"
+
+import "novex/astro/tree/nodes/annotations/Annotation"
+import "novex/astro/tree/nodes/ClassDeclaration"
+import "novex/astro/tree/nodes/NovaFile"
+import "novex/astro/tree/nodes/Node"
+import "novex/astro/tree/nodes/Program"
+import "novex/astro/tree/StatementIterator"
+import "novex/astro/tree/SyntaxTree"
+
+import "novex/astro/util/CompilerStringFunctions"
+
+[AutoFinal]
+class Astro {
+    visible static Bool DEBUG = true
+    
+    visible static Bool testClasses = true
+    
+    visible String[] errors   = new String[]
+    visible String[] warnings = new String[]
+    visible String[] info     = new String[]
+    
+    var NovaFile[] files
+    
+    public construct() {
+        
+    }
+    
+    public build(String[] args) -> SyntaxTree {
+        String directory = FileUtils.getWorkingDirectoryPath() + "/"
+        
+        let annotationTypes = Class.ALL.filter({ _.isOfType(Annotation) })
+        
+        let program = new Program()
+        let tree = new SyntaxTree(this, program)
+        
+        if (DEBUG) {
+            testClasses()
+            
+            let target = "c"
+            
+            let parentDir = new File(args.firstOr("../../../tempstd"))
+            
+            let parseTimer = new Timer()
+            let outputTimer = new Timer()
+            let compileTimer = new Timer().start()
+            let fileTimer = new Timer().start()
+            
+            files = parentDir.getChildFiles(true)
+                .filter({ _.extension.toLowerCase() == ".nova" })
+                .map({ new NovaFile(_, program) })
+            
+            fileTimer.stop()
+            
+            try {
+                files.forEach({ program.addChild(_) })
+                
+                parseTimer.start()
+                
+                tree.formTree()
+                
+                parseTimer.stop()
+                
+                outputTimer.start()
+                
+                let separator = "============================="
+                Console.writeLine(tree.root.files
+                    // .filter(file => { file.name == "Console" })
+                    .map(file => { "#separator #file.name #separator\n#{file.toNova().formatIndentation()}" }).join("\n"))
+                
+                outputTimer.stop()
+            } catch (SyntaxErrorException e) {
+                parseTimer.stop()
+            }
+            
+            compileTimer.stop()
+            
+            errors.forEach({ Console.writeLine("Error: #_") })
+            warnings.forEach({ Console.writeLine("Warning: #_") })
+            info.forEach({ Console.writeLine("Info: #_") })
+            
+            Console.writeLine("Nova file read time: #{fileTimer.duration}ms")
+            Console.writeLine("Nova parse time: #{parseTimer.duration}ms")
+            Console.writeLine("Nova result output time: #{outputTimer.duration}ms")
+            Console.writeLine("Nova compile time: #{compileTimer.duration}ms")
+            
+            if (System.overheadTimer.iterations > 0) {
+                Console.writeLine("Nova overhead timer: #{System.overheadTimer.duration}ms over #{System.overheadTimer.iterations} iterations")
+            }
+        }
+        
+        return tree
+    }
+    
+    testClasses() {
+        
+    }
+}

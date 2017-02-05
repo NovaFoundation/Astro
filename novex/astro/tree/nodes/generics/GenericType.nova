@@ -1,0 +1,30 @@
+package "novex/astro/tree/nodes/generics"
+
+import "novex/astro/util/Location"
+import "novex/astro/tree/nodes/Node"
+import "novex/astro/tree/nodes/Value"
+import "novex/astro/tree/nodes/Type"
+
+[AutoFinal]
+class GenericType extends Type {
+    visible Bool isGeneric => true
+    visible Bool isPrimitiveType => false
+    
+    visible var GenericParameter parameter
+    
+    public construct(String name = null) => super(name)
+    
+    public construct(Type type, GenericParameter parameter) {
+        type.cloneTo(this)
+        
+        this.parameter = parameter
+    }
+    
+    public isValid(Node parent) => true
+    
+    public cloneTo(GenericType other) => other {
+        super.cloneTo(other)
+        
+        other.parameter = parameter
+    }
+}

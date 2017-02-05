@@ -1,0 +1,18 @@
+package "novex/astro"
+
+import "novex/astro/tree/nodes/Node"
+import "novex/astro/tree/nodes/Program"
+
+class SyntaxErrorException extends Exception {
+    public construct() {}
+    
+    public construct(String message, Node node = null, Program program = null) {
+        super(message)
+        
+        node = node ?: program
+        
+        if (node && node.program) {
+            node.program.compiler.errors.add(message)
+        }
+    }
+}

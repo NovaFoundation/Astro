@@ -1,0 +1,25 @@
+package "novex/astro/tree/nodes"
+
+import "novex/astro/SyntaxErrorException"
+import "novex/astro/util/Location"
+
+/// @NodeList extension that represents 
+///
+/// author: Braden Steffaniak
+/// since: 
+/// version: 
+class ArgumentList extends NodeList<Value> {
+    visible Value[] arguments => (Value[])children
+    
+    /// Create a new ArgumentList node.
+    /// 
+    /// parent:   The parent of the ArgumentList node.
+    /// location: The location of the input text in the source file.
+    public construct(Node parent = null, Location location = Location.INVALID) {
+        super(parent, location)
+        
+        
+    }
+    
+    public toString() => "(#{arguments.join(", ")})"
+}

@@ -1,0 +1,13 @@
+package "novex/astro/engines"
+
+import "novex/astro/Astro"
+
+abstract class CodeGeneratorEngine {
+    visible Astro controller
+    
+    public abstract writeFiles()
+    
+    /// Insert the main method into the correct file. Also set up the
+    /// initialization for the program within the main method.
+    public abstract insertMainMethod()
+}

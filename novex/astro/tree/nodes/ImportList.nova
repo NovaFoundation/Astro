@@ -1,0 +1,13 @@
+package "novex/astro/tree/nodes"
+
+import "novex/astro/util/Location"
+
+class ImportList extends NodeList<Import> {
+    public Import[] imports => (Import[])children
+    
+    public construct(Node parent = null, Location location = Location.INVALID) {
+        super(parent, location)
+    }
+    
+    
+}

@@ -1,0 +1,35 @@
+package "novex/astro/tree/nodes/controlstructures"
+
+import "novex/astro/util/Location"
+import "novex/astro/tree/nodes/Node"
+import "novex/astro/tree/nodes/Scope"
+
+class ControlStructure extends Node {
+    visible Scope scope <=> scope
+    
+    /// Create a new IfStatement node.
+    /// 
+    /// #exampleInputs
+    /// 
+    /// parent:   The parent of the IfStatement node.
+    /// location: The location of the input text in the source file.
+    public construct(Node parent = null, Location location = Location.INVALID) {
+        super(parent, location)
+        
+        this.scope = new Scope(this, location)
+    }
+    
+    public addChild(Node child) {
+        scope.children.add(child)
+    }
+    
+    public generateTemporaryScopeNode() -> Node {
+        return new Scope(this)
+    }
+    
+    public cloneTo(ControlStructure other) => other {
+        super.cloneTo(other)
+        
+        other.scope = scope
+    }
+}
