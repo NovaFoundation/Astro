@@ -93,5 +93,5 @@ class Instantiation extends FunctionCall {
             " " + objectNotation.toNova() :
             ""
     
-    public writeNova() => "new #super.writeNova()" + writeArrayAccess() + writeObjectNotation() + writeAccessedNodes()
+    public writeNova() => "new #super.writeNova()"
 }
