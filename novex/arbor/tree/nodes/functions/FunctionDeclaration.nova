@@ -28,6 +28,7 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
         super(parent, location)
         
         parameterList = new ParameterList(this)
+        genericParameters = new GenericParameter[0]
     }
     
     /// Parse the given input into a FunctionDeclaration node. If the input cannot be parsed
