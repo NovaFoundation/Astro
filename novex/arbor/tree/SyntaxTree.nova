@@ -142,20 +142,6 @@ class SyntaxTree {
         phase = 2
     }
     
-    public validateTypes() {
-        root.files.forEach(file => {
-            file.addAutoImports()
-            
-            Console.log("Validating types for file '#file'")
-            
-            if (!file.classes.all({ _.validateTypes() }, false)) {
-                Console.writeLine("Invalid types in file '#file'")
-            }
-        })
-        
-        phase = 3
-    }
-    
     public parseStatements() {
         root.files.forEach(file => {
             Console.log("Parsing placeholders for file '#file'")

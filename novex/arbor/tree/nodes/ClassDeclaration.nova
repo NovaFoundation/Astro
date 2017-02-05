@@ -275,10 +275,6 @@ class ClassDeclaration extends InstanceDeclaration implements Abstractable, Gene
         return true
     }
     
-    public validateTypes() =>
-        fields.all({ _.validateTypes() }, false) &
-        functions.all({ _.validateTypes() }, false)
-    
     public parsePlaceholders() =>
         fields.all({ _.parsePlaceholders() }, false) &
         functions.all({ _.parsePlaceholders() }, false)
