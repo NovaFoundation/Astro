@@ -1,0 +1,175 @@
+package "novex/arbor"
+
+import "nova/io/File"
+import "nova/datastruct/list/Stack"
+import "nova/datastruct/list/List"
+import "nova/datastruct/list/ImmutableArray"
+import "nova/time/Timer"
+
+import "novex/arbor/util/OS"
+import "novex/arbor/util/FileUtils"
+
+import "novex/arbor/tree/nodes/annotations/Annotation"
+import "novex/arbor/tree/nodes/ClassDeclaration"
+import "novex/arbor/tree/nodes/NovaFile"
+import "novex/arbor/tree/nodes/Node"
+import "novex/arbor/tree/nodes/Program"
+import "novex/arbor/tree/StatementIterator"
+import "novex/arbor/tree/SyntaxTree"
+
+import "novex/arbor/util/CompilerStringFunctions"
+
+[AutoFinal]
+class Arbor {
+    visible static Bool DEBUG = true
+    
+    visible static Bool testClasses = true
+    
+    visible String[] errors   = new String[]
+    visible String[] warnings = new String[]
+    visible String[] info     = new String[]
+    
+    var NovaFile[] files
+    
+    public static main(String[] args) {
+        let c = new Arbor()
+        
+        c.compile(args.skip(1))
+        
+        Console.waitForEnter()
+    }
+    
+    public construct() {
+        
+    }
+    
+    public pure compile(String[] args) {
+        String directory = FileUtils.getWorkingDirectoryPath() + "/"
+        
+        if (DEBUG) {
+            testClasses()
+            
+            let target = "c"
+            
+//             args = [
+//                 "../Arbor",
+// 				"../Misc/example",
+// 				"../Misc/stabilitytest", 
+// 				"-output-directory", "../NovaArborOutput/#target",
+// 				"-package-output-directory", "nova", "../StandardLibrary/#target",
+// //				"-dir", formatPath(directory + "../example"),
+// //				"-dir", formatPath(directory + "../stabilitytest"),
+// //				"-run",
+// //				"-csource",
+// 				"-formatc",
+// 				//testClasses ? "-v" : "",
+// 				"-v",
+// //				"-gcc",
+// //				"-tcc",
+// //				"-small",
+// //				"-cargs",
+// //				"-keepc",
+// 				"-single-thread",
+// 				"-single-file",
+// 				"-main",
+// //				"example/Lab",
+// //				"stabilitytest/StabilityTest",
+// //				"example/SvgChart",
+// //				"example/HashMapDemo",
+// //				"example/HashSetDemo",
+// 				"Arbor/Arbor",
+// //				"-nogc",
+// //				"-no-c-output",
+// //				"-dry",
+// //				"-no-notes",
+// //				"-no-warnings",
+// //				"-no-errors",
+// 				"-no-optimize",
+// 				"-target", target,
+// //				"-library",
+//             ]
+            
+            let myString = "hey this is my string"
+            
+            // Async.execute({
+            //     Console.log("INSIDE THREAD... ABOUT TO WAIT")
+                
+            //     external {
+            //         printf("Before %p %p\n", #{myString}, context);
+            //     }
+                
+            //     Thread.sleep(2000)
+                
+            //     external {
+            //         printf("After %p %p\n", #{myString}, context);
+            //     }
+                
+            //     Console.log("After waiting....................!")
+            //     Console.log("my string: #myString")
+            // })
+            
+            // Console.log("Press enter to begin...")
+            // Console.waitForEnter()
+            
+            let annotationTypes = Class.ALL.filter({ _.isOfType(Annotation) })
+            
+            let program = new Program()
+            let tree = new SyntaxTree(this, program)
+            
+            let parentDir = new File(args.firstOr("../../../tempstd"))
+            
+            let parseTimer = new Timer()
+            let outputTimer = new Timer()
+            let compileTimer = new Timer().start()
+            let fileTimer = new Timer().start()
+            
+            files = parentDir.getChildFiles(true).filter({ _.extension.toLowerCase() == ".nova" }).map({ new NovaFile(_, program) })
+            
+            fileTimer.stop()
+            
+            try {
+                files.forEach({ program.addChild(_) })
+                
+                parseTimer.start()
+                
+                tree.formTree()
+                tree.validateTypes()
+                tree.parseStatements()
+                
+                parseTimer.stop()
+                
+                outputTimer.start()
+                
+                let separator = "============================="
+                Console.writeLine(tree.root.files
+                    // .filter(file => { file.name == "Console" })
+                    .map(file => { "#separator #file.name #separator\n#{file.toNova().formatIndentation()}" }).join("\n"))
+                
+                outputTimer.stop()
+            } catch (SyntaxErrorException e) {
+                parseTimer.stop()
+            }
+            
+            compileTimer.stop()
+            
+            errors.forEach({ Console.writeLine("Error: #_") })
+            warnings.forEach({ Console.writeLine("Warning: #_") })
+            info.forEach({ Console.writeLine("Info: #_") })
+            
+            Console.writeLine("Nova file read time: #{fileTimer.duration}ms")
+            Console.writeLine("Nova parse time: #{parseTimer.duration}ms")
+            Console.writeLine("Nova result output time: #{outputTimer.duration}ms")
+            Console.writeLine("Nova compile time: #{compileTimer.duration}ms")
+            
+            if (System.overheadTimer.iterations > 0) {
+                Console.writeLine("Nova overhead timer: #{System.overheadTimer.duration}ms over #{System.overheadTimer.iterations} iterations")
+            }
+            
+            //Console.writeLine("Args: #args")
+        }
+    }
+    
+    testClasses() {
+        
+    }
+}

@@ -1,0 +1,29 @@
+package "novex/arbor/tree/nodes/functions"
+
+import "novex/arbor/SyntaxErrorException"
+import "novex/arbor/InvalidParseException"
+import "novex/arbor/tree/nodes/Node"
+import "novex/arbor/tree/nodes/Value"
+import "novex/arbor/util/Location"
+
+import "novex/arbor/util/CompilerStringFunctions"
+
+/// @Value extension that represents 
+///
+/// author: Braden Steffaniak
+/// since: 
+/// version: 
+[AutoFinal]
+class EmptyArrayBracket extends Value {
+    /// Create a new EmptyArrayBracket node.
+    /// 
+    /// #exampleInputs
+    /// 
+    /// parent:   The parent of the EmptyArrayBracket node.
+    /// location: The location of the input text in the source file.
+    public construct(Node parent = null, Location location = Location.INVALID) {
+        super(parent, location)
+    }
+    
+    public writeNova() => ""
+}

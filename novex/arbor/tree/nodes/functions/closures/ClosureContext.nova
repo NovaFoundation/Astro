@@ -1,0 +1,10 @@
+package "novex/arbor/tree/nodes/functions/closures"
+
+import "novex/arbor/util/Location"
+import "novex/arbor/tree/nodes/Node"
+
+class ClosureContext extends Node {
+    public construct(Node parent = null, Location location = Location.INVALID) {
+        super(parent, location)
+    }
+}

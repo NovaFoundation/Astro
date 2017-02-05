@@ -1,0 +1,9 @@
+package "novex/arbor/tree/nodes/operations"
+
+import "novex/arbor/tree/nodes/Value"
+import "novex/arbor/tree/nodes/variables/VariableDeclaration"
+
+trait Assignable {
+    public onAssigned(Value value) {}
+    public onAssignedTo(VariableDeclaration declaration) {}
+}

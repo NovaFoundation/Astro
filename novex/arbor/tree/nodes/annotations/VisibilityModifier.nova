@@ -1,0 +1,21 @@
+package "novex/arbor/tree/nodes/annotations"
+
+import "novex/arbor/SyntaxErrorException"
+import "novex/arbor/tree/nodes/Node"
+import "novex/arbor/tree/nodes/variables/InstanceDeclaration"
+
+trait VisibilityModifier extends Annotation implements Modifier {
+    visible static immutable Class<Node>[] applicationTypes => [InstanceDeclaration]
+    
+    public checkApplication(Node toNode, Bool throwError = true) -> Bool {
+        if (toNode.annotations && toNode.annotations.any({ _.class.isOfType(VisibilityModifier) })) {
+            if (throwError) {
+                throw new SyntaxErrorException("Duplicate visibility modifier #this.class.location applied to #toNode.class.location", this)
+            } else {
+                return false
+            }
+        }
+        
+        return super.checkApplication(toNode, throwError)
+    }
+}

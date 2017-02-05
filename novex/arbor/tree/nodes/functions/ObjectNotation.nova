@@ -1,0 +1,45 @@
+package "novex/arbor/tree/nodes/functions"
+
+import "novex/arbor/SyntaxErrorException"
+import "novex/arbor/InvalidParseException"
+import "novex/arbor/util/Location"
+import "novex/arbor/tree/nodes/Node"
+import "novex/arbor/tree/nodes/NodeList"
+import "novex/arbor/tree/nodes/variables/VariableDeclaration"
+
+import "novex/arbor/util/CompilerStringFunctions"
+
+/// @Node extension that represents 
+///
+/// author: Braden Steffaniak
+/// since: 
+/// version: 
+class ObjectNotation extends NodeList {
+    /// Create a new ObjectNotation node.
+    /// 
+    /// #exampleInputs
+    /// 
+    /// parent:   The parent of the ObjectNotation node.
+    /// location: The location of the input text in the source file.
+    public construct(Node parent = null, Location location = Location.INVALID) {
+        super(parent, location)
+    }
+    
+    public findVariableDeclaration(String name, Bool searchAncestors = true) -> VariableDeclaration {
+        var decl = parentInstantiation.typeClass.findVariableDeclaration(name, searchAncestors)
+        
+        if (decl) {
+            return decl
+        } else {
+            return super.findVariableDeclaration(name, searchAncestors)
+        }
+    }
+    
+    public writeChildren() =>
+        children.count > 0 ?
+            "\n" + children.map({ _.toNova() + "\n" }).join() :
+            ""
+    
+    public writeNova() =>
+        "{" + writeChildren() + "}"
+}

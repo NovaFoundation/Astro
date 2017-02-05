@@ -1,0 +1,27 @@
+package "novex/arbor/tree/nodes/controlstructures"
+
+import "novex/arbor/util/Location"
+import "novex/arbor/tree/nodes/Node"
+import "novex/arbor/tree/nodes/Scope"
+
+class ControlStructure extends Node {
+    visible Scope scope <=> scope
+    
+    /// Create a new IfStatement node.
+    /// 
+    /// #exampleInputs
+    /// 
+    /// parent:   The parent of the IfStatement node.
+    /// location: The location of the input text in the source file.
+    public construct(Node parent = null, Location location = Location.INVALID) {
+        super(parent, location)
+        
+        this.scope = new Scope(this, location)
+    }
+    
+    public cloneTo(ControlStructure other) => other {
+        super.cloneTo(other)
+        
+        other.scope = scope
+    }
+}
