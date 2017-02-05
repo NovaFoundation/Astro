@@ -46,6 +46,8 @@ class LambdaParameter extends Parameter {
         } else if (!input.isIdentifier) {
             toss new InvalidParseException("Invalid lambda parameter name '#input' given", node)
         } else {
+            node.name = input
+            
             return node
         }
     }
