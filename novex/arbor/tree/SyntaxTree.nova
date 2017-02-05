@@ -84,9 +84,11 @@ class SyntaxTree {
                 
                 statement = annotations.remainingStatement
                 
+                let parent = parents.peek()
+                
                 if (statement.count > 0) {
                     try {
-                        node = parents.peek().parseStatement(statement, require: false)
+                        node = parent.parseStatement(statement, parent, require: false)
                     } catch (SyntaxErrorException e) {
                         Console.log(e)
                         
@@ -111,7 +113,7 @@ class SyntaxTree {
                             // }
                         }
                         
-                        parents.peek().addChild(node)
+                        parent.addChild(node)
                     }
                 } else {
                     // Console.writeLine("Only parsed annotation\n")
@@ -119,9 +121,9 @@ class SyntaxTree {
                 
                 if (statements.beginsScope) {
                     if (!node) {
-                        SyntaxMessage.error("Unable to parse scope declaration '#statement'", parents.peek() ?: root, throwException: false)
+                        SyntaxMessage.error("Unable to parse scope declaration '#statement'", parent ?: root, throwException: false)
                         
-                        node = parents.peek().generateTemporaryScopeNode()
+                        node = parent.generateTemporaryScopeNode()
                     }
                     
                     parents.push(node)
