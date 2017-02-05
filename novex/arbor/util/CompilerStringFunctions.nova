@@ -439,9 +439,9 @@ extension CompilerStringFunctions {
         let matches = new Int[0]
         System.overheadTimer.start()
         operators.forEach(operator => {
-            Int index = 0
+            var Int index = 0
             
-            while ((index = findStringOnTopLevel(operator, start: index)) >= 0) {   
+            while ((index = findStringOnTopLevel(operator, start: index)) >= 0) {
                 if ((includeEdges || index > 0 && index < this.count - operator.count) &&
                     isStrictlyOperator(operator, index)) {
                     matches.add(index)
