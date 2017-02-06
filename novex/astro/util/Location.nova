@@ -19,6 +19,8 @@ class Location {
      */
     public Int lineNumber
     
+    visible Int fileLineNumber => lineNumber + 1
+    
     /**
      * Get character offset that the Location represents on the
      * specified line number.
@@ -27,6 +29,8 @@ class Location {
      *         specified line number.
      */
     public Int offset
+    
+    visible Int fileOffset => offset + 1
     
     /**
      * Get the Bounds of the Location's offset. The starting and ending
