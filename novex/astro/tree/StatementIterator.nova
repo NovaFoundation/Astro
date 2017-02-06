@@ -13,13 +13,13 @@ class StatementIterator implements Iterator<String> {
     
     visible String source
     
+    visible Int startNewlineCount, endNewlineCount
+    visible Int startNewlinePosition, endNewlinePosition
+    visible Int startPosition, endPosition, position
+    
     visible Bool beginsScope, endsScope
     
-    visible Int newlineCount
-    visible Int newlinePosition
-    
     visible Int scopesEnded
-    visible Int position
     
     Stack<Node> parents
     
@@ -42,17 +42,36 @@ class StatementIterator implements Iterator<String> {
     visible String next {
         get {
             if (hasNext) {
-                var prev = position
+                startNewlineCount = endNewlineCount
+                startNewlinePosition = endNewlinePosition
                 
-                position = source.nextNonWhitespaceIndex(position)
-                position = source.calculateStatementEnd(position)
+                startPosition = source.nextNonWhitespaceIndex(position)
+                
+                checkNewline(position, startPosition, {
+                    startNewlineCount++
+                    startNewlinePosition = _
+                })
+                
+                position = source.calculateStatementEnd(startPosition)
                 position = position < 0 ? source.count : position
                 
-                var end = position
+                endPosition = position
+                
+                checkNewline(startPosition, endPosition, {
+                    startNewlineCount++
+                })
                 
                 updateScopeProperties()
                 
-                return source.substring(prev, end).trim()
+                endNewlineCount = startNewlineCount
+                endNewlinePosition = startNewlinePosition
+                
+                checkNewline(endPosition, position, {
+                    endNewlineCount++
+                    endNewlinePosition = _
+                })
+                
+                return source.substring(startPosition, endPosition).trim()
             }
             
             throw new NoSuchElementException()
@@ -99,6 +118,20 @@ class StatementIterator implements Iterator<String> {
         this.parents = parents
         
         reset()
+    }
+    
+    checkNewline(Int start, Int end, action(Int)) {
+        var offset = start
+        
+        for (i in start..end) {
+            let c = source[i]
+            
+            switch (c)
+                '\n' => action(offset)
+                '\r' => continue
+            
+            offset++
+        }
     }
     
     public reset() => this { position = 0 }
