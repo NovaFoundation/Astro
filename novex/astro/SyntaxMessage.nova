@@ -1,22 +1,33 @@
 package "novex/astro"
 
 import "novex/astro/tree/nodes/Node"
+import "novex/astro/util/Location"
 
 class SyntaxMessage {
     //visible static HashMap<Node, String>
     
     visible static String latestErrorMessage
     
-    public static errorIf(String message, Node node, Bool condition, Bool throwException = true) {
+    public static errorIf(String message, Node node, Bool condition, Location location = null, Bool throwException = true) {
         if (condition) {
-            error(message, node, throwException)
+            error(message, node, location, throwException)
         }
     }
     
-    public static error(String message, Node node, Bool throwException = true) {
-        if (node) {
-            message += " - #node.locationInfo"
+    public static error(String message, Node node, Location location = null, Bool throwException = true) {
+        var info = ""
+        
+        if (node?.parentFile) {
+            info += " #node.parentFile.fileLocation"
         }
+        
+        if (location) {
+            info += (info.count > 0 ? ":" : " at location ") + "#location"
+        } else if (node) {
+            info += (info.count > 0 ? ":" : " at location ") + "- #node.location"
+        }
+        
+        message += "#info"
         
         if (throwException) {
             throw new SyntaxErrorException(message, node)
