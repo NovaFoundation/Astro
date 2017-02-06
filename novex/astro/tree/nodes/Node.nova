@@ -43,7 +43,7 @@ class Node implements Annotatable {
                 info += "#parentFile.fileLocation"
             }
             if (location) {
-                info += (info.count > 0 ? ":" : "at location ") + "#location.lineNumber:#location.offset"
+                info += (info.count > 0 ? ":" : "at location ") + "#location"
             }
             
             return info
