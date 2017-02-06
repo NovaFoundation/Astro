@@ -7,6 +7,7 @@ import "nova/datastruct/list/EmptyStackException"
 import "novex/astro/SyntaxMessage"
 import "novex/astro/Astro"
 import "novex/astro/SyntaxErrorException"
+import "novex/astro/util/Location"
 import "novex/astro/tree/nodes/Program"
 import "novex/astro/tree/nodes/Node"
 import "novex/astro/tree/nodes/NovaFile"
@@ -81,10 +82,11 @@ class SyntaxTree {
                 statement = annotations.remainingStatement
                 
                 let parent = parents.peek()
+                let location = new Location(statements.startNewlineCount, statements.startPosition - statements.startNewlinePosition - 1, statements.startPosition, statements.endPosition)
                 
                 if (statement.count > 0) {
                     try {
-                        node = parent.parseStatement(statement, parent, require: false)
+                        node = parent.parseStatement(statement, parent, location: location, require: false)
                     } catch (SyntaxErrorException e) {
                         Console.log(e)
                         
@@ -117,7 +119,7 @@ class SyntaxTree {
                 
                 if (statements.beginsScope) {
                     if (!node) {
-                        SyntaxMessage.error("Unable to parse scope declaration '#statement'", parent ?: root, throwException: false)
+                        SyntaxMessage.error("Unable to parse scope declaration '#statement'", parent ?: root, location, throwException: false)
                         
                         node = parent.generateTemporaryScopeNode()
                     }
