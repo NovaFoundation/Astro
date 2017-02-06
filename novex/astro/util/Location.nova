@@ -266,6 +266,6 @@ class Location {
     }
     
     public toString() -> String {
-        return "Line #lineNumber #bounds"
+        return "#fileLineNumber:#fileOffset"
     }
 }
