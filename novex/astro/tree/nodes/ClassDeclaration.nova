@@ -252,8 +252,8 @@ class ClassDeclaration extends InstanceDeclaration implements Abstractable, Gene
         if (super.parseModifier(modifier)) return true
             
         match (modifier)
-            case "abstract" isAbstract = true
-            default return false
+            "abstract" => isAbstract = true
+            default => return false
         return true
     }
     

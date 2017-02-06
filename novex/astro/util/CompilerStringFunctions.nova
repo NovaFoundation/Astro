@@ -520,17 +520,18 @@ extension CompilerStringFunctions {
                 return start
             } else {
                 match (c) {
-                    case '"'  start = findEndingQuote(start) + 1
-                    case '\'' start = findEndingChar(c, start, 1) + 1
-                    case '('  start = findEndingMatch(start, '(', ')') + 1
-                    case '{'  start = findEndingMatch(start, '{', '}') + 1
-                    case '['  start = findEndingMatch(start, '[', ']') + 1
-                    case '<' {
+                    '"'  => start = findEndingQuote(start) + 1
+                    '\'' => start = findEndingChar(c, start, 1) + 1
+                    '('  => start = findEndingMatch(start, '(', ')') + 1
+                    '{'  => start = findEndingMatch(start, '{', '}') + 1
+                    '['  => start = findEndingMatch(start, '[', ']') + 1
+                    '<'  => {
                         if (searchGenerics) {
                             start = findEndingMatch(start, '<', '>')
                         }
                         fallthrough
-                    } default start++
+                    }
+                    default => start++
                 }
                 
                 if (start <= 0) {

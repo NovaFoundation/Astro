@@ -83,14 +83,15 @@ class Catch extends Node {
         var values = input.splitValues()
         
         match (values.count) {
-            case 2 {
+            2 => {
                 variable = values[1]
                 
                 fallthrough  
-            } case 1 {
+            }
+            1 => {
                 return (exception = Type.parse(values[0])) != null
             }
-            default return false
+            default => return false
         }
     }
     
