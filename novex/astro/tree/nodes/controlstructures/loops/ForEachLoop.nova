@@ -77,8 +77,7 @@ class ForEachLoop extends Loop {
         }
     }
     
-    parseIterator(String input) =>
-        (iterator = Value.parse(input, parent)) != null
+    parseIterator(String input) => iterator = Value.parse(input, parent)
     
     parseVariable(String input) => variable != null {
         if (input.isIdentifier) {
