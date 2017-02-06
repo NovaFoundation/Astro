@@ -43,7 +43,7 @@ extension CompilerStringFunctions {
         return true
     }
     
-    public getArrayAccesses(String this) -> Tuple2<Array<String>, Array<Int>> {
+    public getArrayAccesses(String this) -> Tuple2<Array<String>, Int> {
         var String[] array = null
         var bracketIndex = count - 1
         
@@ -67,10 +67,7 @@ extension CompilerStringFunctions {
             }
         }
         
-        let i = new Int[]
-        i.add(bracketIndex + 1)
-        
-        return new Tuple2(array, i)
+        return new Tuple2(array, bracketIndex + 1)
     }
     
     public substring(String this, Bounds bounds) =>

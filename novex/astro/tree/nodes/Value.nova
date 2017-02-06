@@ -67,7 +67,7 @@ class Value extends Node {
         let arrayData = input.getArrayAccesses()
         
         if (arrayData.item1) {
-            input = input.substring(end: arrayData.item2[0]).trim()
+            input = input.substring(end: arrayData.item2).trim()
         }
         
         if (let value = parseValue(input, parent, location, require)) {
