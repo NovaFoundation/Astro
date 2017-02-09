@@ -40,24 +40,18 @@ class SyntaxTree {
         root.tree = this
     }
     
-    // var tempL(NovaFile file)
-    
     public processFiles(func(NovaFile)) {
-        // this.tempL = func
+        let tasks = fileGroups.map(files => {
+            Console.log("files1: #files")
+            return Async.request({
+                Console.log("files: #files")
+                files.forEach({
+                    Console.log("Got #_")
+                })
+            })
+        })
         
-        // let requests = new Task[]
-        
-        // fileGroups.forEach(files => {
-        //     requests.add(Async.request({
-        //         files.forEach(file => {
-        //             tempL(file)
-        //         })
-        //     }))
-        // })
-        
-        // requests.forEach({ _.waitForCompletion() })
-        
-        root.files.forEach(func)
+        tasks.forEach({ _.waitForCompletion() })
     }
     
     public formTree() {
