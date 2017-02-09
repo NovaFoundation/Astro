@@ -20,7 +20,6 @@ import "novex/astro/util/CompilerStringFunctions"
 class SyntaxTree {
     visible Program root
     
-    Stack<Annotation> pendingAnnotations
     Stack<Node> parents
     
     visible Astro compiler
@@ -28,7 +27,6 @@ class SyntaxTree {
     NovaFile[][] fileGroups
     
     public construct(Astro compiler, Program root) {
-        pendingAnnotations = new Stack()
         parents = new Stack()
         
         this.compiler = compiler
@@ -71,7 +69,7 @@ class SyntaxTree {
                 
                 let annotations = searchAnnotations(statement)
                 
-                annotations.addTo(pendingAnnotations)
+                annotations.addTo(file.pendingAnnotations)
                 
                 statement = annotations.remainingStatement
                 
@@ -95,12 +93,12 @@ class SyntaxTree {
                     }
                     
                     if (node) {
-                        while (!pendingAnnotations.isEmpty) {
-                            node.addAnnotation(pendingAnnotations.pop())
+                        while (!file.pendingAnnotations.isEmpty) {
+                            node.addAnnotation(file.pendingAnnotations.pop())
                             
                             // Console.writeLine("Added annotation '#node.annotations.last'")
                             
-                            // if (pendingAnnotations.isEmpty) {
+                            // if (file.pendingAnnotations.isEmpty) {
                             //     Console.writeLine()
                             // }
                         }

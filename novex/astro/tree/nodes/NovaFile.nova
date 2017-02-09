@@ -2,9 +2,11 @@ package "novex/astro/tree/nodes"
 
 import "nova/io/File"
 import "nova/io/FileReader"
+import "nova/datastruct/list/Stack"
 
 import "novex/astro/util/Location"
 import "novex/astro/SyntaxMessage"
+import "novex/astro/tree/nodes/annotations/Annotation"
 import "novex/astro/tree/nodes/functions/closures/ClosureContext"
 import "novex/astro/tree/nodes/functions/closures/ClosureDeclaration"
 
@@ -16,6 +18,8 @@ class NovaFile extends Node {
     visible String name, source, externalType
     
     visible File file
+    
+    visible Stack<Annotation> pendingAnnotations = new Stack()
     
     visible ImportList importList
     
