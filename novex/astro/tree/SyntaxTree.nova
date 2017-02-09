@@ -22,17 +22,17 @@ class SyntaxTree {
     
     visible Astro compiler
     
-    NovaFile[][] fileGroups
-    
     public construct(Astro compiler, Program root) {
         this.compiler = compiler
         this.root = root
         
-        fileGroups = new NovaFile[][]
-        fileGroups.add(root.files)
+        // fileGroups = new NovaFile[][]
+        // fileGroups.add(root.files)
         
         root.tree = this
     }
+    
+    public groupFiles() => root.files.map({ return [_] })
     
     public processFiles(func(NovaFile)) {
         let tasks = fileGroups.map(files => {
