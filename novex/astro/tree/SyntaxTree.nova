@@ -35,13 +35,9 @@ class SyntaxTree {
     public groupFiles() => root.files.map({ return [_] })
     
     public processFiles(func(NovaFile)) {
-        let tasks = fileGroups.map(files => {
-            Console.log("files1: #files")
-            return Async.request({
-                Console.log("files: #files")
-                files.forEach({
-                    Console.log("Got #_")
-                })
+        let tasks = groupFiles().map(files => {
+            Async.request({
+                files.forEach(func)
             })
         })
         
