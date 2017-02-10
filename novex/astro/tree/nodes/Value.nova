@@ -106,7 +106,7 @@ class Value extends Node {
     public parseType(String input) =>
         input && (type = Type.parse(input, this))
     
-    public writeType() => "#type.toNova()"
+    public writeType() => type.toNova()
     public writeArrayAccess() => arrayAccess ? arrayAccess.toNova() : ""
     
     public cloneTo(Value other) => other {
