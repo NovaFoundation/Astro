@@ -29,6 +29,7 @@ extension CompilerStringFunctions {
     public Bool String.isIdentifier => count > 0 && matches(/[A-Za-z_][A-Za-z0-9_]*/)
     public Bool String.isNumber => count > 0 && matches(/-?[0-9]+/)
     public Bool String.isBool => this == "true" || this == "false"
+    public String String.firstWord => nextWord()
     
     public getStatements(String this, Stack<Node> parents) =>
         new StatementIterator(this, parents)
