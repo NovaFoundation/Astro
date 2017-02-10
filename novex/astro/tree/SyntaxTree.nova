@@ -5,6 +5,7 @@ import "nova/datastruct/list/Stack"
 import "nova/datastruct/list/List"
 import "nova/datastruct/list/EmptyStackException"
 import "nova/time/Timer"
+import "nova/thread/Thread"
 
 import "novex/astro/SyntaxMessage"
 import "novex/astro/Astro"
@@ -58,6 +59,7 @@ class SyntaxTree {
             let parents = new Stack<Node>([file])
             
             let statements = file.source.getStatements(parents)
+            file.statements = statements
             
             for (statement in statements) {
                 if (parents.isEmpty) break
