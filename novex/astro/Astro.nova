@@ -98,6 +98,8 @@ class Astro {
             if (System.overheadTimer.iterations > 0) {
                 Console.writeLine("Nova overhead timer: #{System.overheadTimer.duration}ms over #{System.overheadTimer.iterations} iterations")
             }
+            
+            Console.log("#Node.staticId nodes created")
         }
         
         return tree
