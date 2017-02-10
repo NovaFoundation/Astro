@@ -1,5 +1,6 @@
 package "novex/astro/tree"
 
+import "nova/datastruct/HashMap"
 import "nova/datastruct/list/Stack"
 import "nova/datastruct/list/List"
 import "nova/datastruct/list/EmptyStackException"
@@ -21,6 +22,8 @@ class SyntaxTree {
     visible Program root
     
     visible Astro astro
+    
+    visible HashMap<String, Long> compileTimes = new HashMap<String, Long>()
     
     public construct(Astro astro, Program root) {
         this.astro = astro
@@ -127,6 +130,12 @@ class SyntaxTree {
             if (parents.peek() != file) {
                 SyntaxMessage.error("Missing ending brace", file, throwException: false)
             }
+            
+            Thread.lock()
+            
+            compileTimes[file.fileLocation] = timer.duration
+            
+            Thread.unlock()
         })
     }
     
