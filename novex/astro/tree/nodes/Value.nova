@@ -106,17 +106,6 @@ class Value extends Node {
     public parseType(String input) =>
         input && (type = Type.parse(input, this))
     
-    public validateTypes() => true {
-        if (type && !type.isValid(this)) {
-            invalidTypeError(throwException: false)
-            
-            return false
-        }
-    }
-    
-    public invalidTypeError(Type type = type, Bool throwException = true) =>
-        SyntaxMessage.error("Invalid type '#type'", this, throwException: throwException)
-    
     public writeType() => "#type.toNova()"
     public writeArrayAccess() => arrayAccess ? arrayAccess.toNova() : ""
     
