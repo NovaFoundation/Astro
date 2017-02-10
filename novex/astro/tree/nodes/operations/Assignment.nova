@@ -75,7 +75,7 @@ class Assignment extends Operation {
     public static findAssignment(String input, Int assignmentIndex) =>
         input.substring(assignmentIndex + 1).trim()
     
-    parseAssignedNode(String input) => assigned {
+    parseAssignedNode(String input) => assigned.class.isOfType(Assignable) {
         until (assigned) {
             assigned = ImplicitDeclaration.parse(input, this, location, require: false)
             assigned = LocalDeclaration.parse(input, this, location, require: false)
