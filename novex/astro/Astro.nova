@@ -52,7 +52,7 @@ class Astro {
             
             let target = "c"
             
-            let parentDir = new File(args.firstOr("../../../tempstd"))
+            let parentDir = new File(compiler.directoryLocations.firstOr("../../../tempstd"))
             
             let parseTimer = new Timer()
             let outputTimer = new Timer()
