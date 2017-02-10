@@ -20,14 +20,11 @@ import "novex/astro/util/CompilerStringFunctions"
 class SyntaxTree {
     visible Program root
     
-    visible Astro compiler
+    visible Astro astro
     
-    public construct(Astro compiler, Program root) {
-        this.compiler = compiler
+    public construct(Astro astro, Program root) {
+        this.astro = astro
         this.root = root
-        
-        // fileGroups = new NovaFile[][]
-        // fileGroups.add(root.files)
         
         root.tree = this
     }
