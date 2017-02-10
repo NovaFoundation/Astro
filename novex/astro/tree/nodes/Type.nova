@@ -12,7 +12,7 @@ import "novex/astro/util/CompilerStringFunctions"
 [AutoFinal]
 class Type {
     visible Bool isGeneric => false
-    visible Bool isPrimitiveType => PRIMITIVE_TYPES.any({ _.equals(name) })
+    visible Bool isPrimitiveType => PRIMITIVE_TYPES.contains(name)
     
     visible static String[] PRIMITIVE_TYPES = ["Bool", "Byte", "Short", "Int", "Long", "Float", "Double", "Char"]
     
