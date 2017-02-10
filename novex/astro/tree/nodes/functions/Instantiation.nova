@@ -77,9 +77,6 @@ class Instantiation extends FunctionCall {
         }
     }
     
-    public writeName() =>
-        declaration.parentClass.name
-    
     public writeObjectNotation() =>
         objectNotation ?
             " " + objectNotation.toNova() :
