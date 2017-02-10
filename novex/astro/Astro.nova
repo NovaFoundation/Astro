@@ -35,11 +35,9 @@ class Astro {
     
     visible Novac compiler
     
-    public construct() {
-        
-    }
+    public construct(visible Novac compiler) {}
     
-    public build(Novac compiler) -> SyntaxTree {
+    public build() -> SyntaxTree {
         String directory = FileUtils.getWorkingDirectoryPath() + "/"
         
         let annotationTypes = Class.ALL.filter({ _.isOfType(Annotation) })
