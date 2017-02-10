@@ -67,19 +67,11 @@ class Instantiation extends FunctionCall {
             var className = callString.substring(0, parenthesisIndex).trim()
             
             if (className.isIdentifier) {
-                var clazz = parent.parentFile.getImportedClass(className)
+                var parameters = callString.substring(parenthesisIndex)
+                var call = FunctionCall.parse(className + parameters, parent)
                 
-                if (clazz) {
-                    FunctionDeclaration constructor = clazz.functions.firstWhere({ _.name == "construct" })
-                    
-                    if (constructor) {
-                        var parameters = callString.substring(parenthesisIndex)
-                        var call = FunctionCall.parse(className + parameters, parent, declaration: constructor)
-                        
-                        if (call) {
-                            return (Instantiation)call.cloneTo(node)
-                        }
-                    }
+                if (call) {
+                    return (Instantiation)call.cloneTo(node)
                 }
             }
         }
