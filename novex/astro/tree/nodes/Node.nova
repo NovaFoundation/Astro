@@ -167,7 +167,7 @@ class Node implements Annotatable {
     }
     
     public generateTemporaryScopeNode() -> Node =>
-        throw new UnimplementedOperationException("#this.class does not implement generateTemporaryScopeNode")
+        throw new UnimplementedOperationException("#this.class does not implement generateTemporaryScopeNode #locationInfo")
     
     public static strictParse(action()) {
         try {
