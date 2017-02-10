@@ -11,7 +11,7 @@ class Program extends NodeList<NovaFile> {
     
     public SyntaxTree tree
     
-    visible Astro compiler => tree.compiler
+    visible Astro astro => tree.astro
     
     public construct(SyntaxTree tree = null) {
         super()

@@ -12,7 +12,7 @@ class SyntaxErrorException extends Exception {
         node = node ?: program
         
         if (node && node.program) {
-            node.program.compiler.errors.add(message)
+            node.program.astro.errors.add(message)
         }
     }
 }

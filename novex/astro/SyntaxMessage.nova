@@ -32,7 +32,7 @@ class SyntaxMessage {
         if (throwException) {
             throw new SyntaxErrorException(message, node)
         } else {
-            node.program.compiler.errors.add(message)
+            node.program.astro.errors.add(message)
         }
     }
 }
