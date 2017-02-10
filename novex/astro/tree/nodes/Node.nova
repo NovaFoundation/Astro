@@ -95,59 +95,6 @@ class Node implements Annotatable {
     visible ClassDeclaration parentClass => parent?.parentClass
     visible Bool isWithinClass => parentClass != null
     
-    visible Scope parentScope => parentWithScope.scope
-    visible Bool isWithinScope => parentScope != null
-    
-    visible Node parentWithScope {
-        get {
-            if (!parent) return null
-            
-            return parent.containsScope ? parent : parent.parentWithScope
-        }
-        
-        no set
-    }
-    
-    public Node scopeConsumer => this
-    
-    public var Scope scope {
-        get {
-            let consumer = scopeConsumer
-            
-            return consumer && consumer != this ? consumer.scope : null
-        }
-        
-        set {
-            let consumer = scopeConsumer
-            
-            if (consumer && consumer != this) {
-                consumer.setScope(value)
-            }
-        }
-    }
-    
-    setScope(Scope s) => this.scope = s
-    
-    visible Bool containsScope => scope != null
-    
-    visible Node next => getAdjacentNode(1)
-    visible Node previous => getAdjacentNode(-1)
-    
-    visible Int index {
-    	get { parentScope.children.indexOf(this) }
-        set { parentScope.children.swap(index, value) }
-    }
-    
-    public getAdjacentNode(Int offset) -> Node => null {
-        if (parent) {
-            Int index = this.index + offset
-            
-            if (index >= 0 && index < parentScope.children.count) {
-                return (Node)parentScope.children[index]
-            }
-        }
-    }
-    
     /// Create a new Node. Initializes the data.
     /// 
     /// parent:   The Node to act as the parent temporarily.
