@@ -6,6 +6,8 @@ import "nova/datastruct/list/List"
 import "nova/datastruct/list/ImmutableArray"
 import "nova/time/Timer"
 
+import "novex/novac/Novac"
+
 import "novex/astro/util/OS"
 import "novex/astro/util/FileUtils"
 
@@ -31,11 +33,13 @@ class Astro {
     
     var NovaFile[] files
     
+    visible Novac compiler
+    
     public construct() {
         
     }
     
-    public build(String[] args) -> SyntaxTree {
+    public build(Novac compiler) -> SyntaxTree {
         String directory = FileUtils.getWorkingDirectoryPath() + "/"
         
         let annotationTypes = Class.ALL.filter({ _.isOfType(Annotation) })
