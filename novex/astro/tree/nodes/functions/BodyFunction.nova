@@ -2,6 +2,7 @@ package "novex/astro/tree/nodes/functions"
 
 import "novex/astro/InvalidParseException"
 import "novex/astro/tree/nodes/Node"
+import "novex/astro/tree/nodes/ScopeDeclaration"
 import "novex/astro/tree/nodes/Type"
 import "novex/astro/tree/nodes/Scope"
 import "novex/astro/tree/nodes/Return"
@@ -11,9 +12,7 @@ import "novex/astro/SyntaxMessage"
 
 import "novex/astro/util/CompilerStringFunctions"
 
-class BodyFunction extends FunctionDeclaration {
-    public Scope scope <=> scope
-    
+class BodyFunction extends FunctionDeclaration implements ScopeDeclaration {
     visible Node inlineBody
     
     visible Bool implicitType = false
@@ -33,9 +32,6 @@ class BodyFunction extends FunctionDeclaration {
     public addChild(Node child) {
         scope.children.add(child)
     }
-    
-    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) =>
-        scope.parseStatement(input, this, location, require)
     
     /// Parse the given input into a BodyFunction node. If the input cannot be parsed
     /// into a BodyFunction node, null is returned.

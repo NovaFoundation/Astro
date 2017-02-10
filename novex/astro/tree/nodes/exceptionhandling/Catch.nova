@@ -5,6 +5,7 @@ import "novex/astro/InvalidParseException"
 import "novex/astro/tree/nodes/Node"
 import "novex/astro/tree/nodes/Type"
 import "novex/astro/tree/nodes/Scope"
+import "novex/astro/tree/nodes/ScopeDeclaration"
 import "novex/astro/util/Location"
 
 import "novex/astro/util/CompilerStringFunctions"
@@ -14,13 +15,11 @@ import "novex/astro/util/CompilerStringFunctions"
 /// author: Braden Steffaniak
 /// since: 
 /// version: 
-class Catch extends Node {
+class Catch extends Node implements ScopeDeclaration {
     visible Bool soft = false
     
     visible Type exception
     visible String variable
-    
-    visible Scope scope <=> scope
     
     /// Create a new Catch node.
     /// 

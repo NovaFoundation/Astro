@@ -5,6 +5,7 @@ import "novex/astro/InvalidParseException"
 import "novex/astro/tree/nodes/Node"
 import "novex/astro/tree/nodes/Type"
 import "novex/astro/tree/nodes/Scope"
+import "novex/astro/tree/nodes/ScopeDeclaration"
 import "novex/astro/util/Location"
 
 import "novex/astro/util/CompilerStringFunctions"
@@ -16,12 +17,10 @@ import "novex/astro/util/CompilerStringFunctions"
 /// @author    Braden Steffaniak
 /// @since    v0.1 Mar 22, 2014 at 4:01:38 PM
 /// @version    v0.2.38 Dec 6, 2014 at 5:19:17 PM
-class Try extends ExceptionHandler {
+class Try extends ExceptionHandler implements ScopeDeclaration {
     visible static String IDENTIFIER = "try"
     
     visible Try parentTry => this
-    
-    visible Scope scope <=> scope
     
     /// Create a new Try node.
     /// 

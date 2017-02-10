@@ -3,10 +3,9 @@ package "novex/astro/tree/nodes/controlstructures"
 import "novex/astro/util/Location"
 import "novex/astro/tree/nodes/Node"
 import "novex/astro/tree/nodes/Scope"
+import "novex/astro/tree/nodes/ScopeDeclaration"
 
-class ControlStructure extends Node {
-    visible Scope scope <=> scope
-    
+class ControlStructure extends Node implements ScopeDeclaration {
     /// Create a new IfStatement node.
     /// 
     /// #exampleInputs
