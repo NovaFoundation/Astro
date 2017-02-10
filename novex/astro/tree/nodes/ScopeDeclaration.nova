@@ -1,0 +1,25 @@
+package "novex/astro/tree/nodes"
+
+import "novex/astro/util/Location"
+
+trait ScopeDeclaration extends Node {
+    visible Scope scope
+    
+    visible Scope parentScope => parentWithScope.scope
+    visible Bool isWithinScope => parentScope != null
+    
+    visible Node parentWithScope {
+        get {
+            if (!parent) return null
+            
+            return parent.containsScope ? parent : parent.parentWithScope
+        }
+        
+        no set
+    }
+    
+    visible Bool containsScope => scope != null
+    
+    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) =>
+        scope.parseStatement(input, this, location, require)
+}
