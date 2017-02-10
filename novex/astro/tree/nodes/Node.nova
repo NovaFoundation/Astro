@@ -162,8 +162,8 @@ class Node implements Annotatable {
             new ValidationResult(this)*/
     }
     
-    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node {
-        return parentWithScope?.parseStatement(input, parent, location, require)
+    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node => null {
+        throw new UnimplementedOperationException("#this.class does not implement parseStatement #locationInfo")
     }
     
     public generateTemporaryScopeNode() -> Node =>
