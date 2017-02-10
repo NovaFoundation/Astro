@@ -60,7 +60,7 @@ class ExternalBlock extends Node implements ScopeDeclaration {
                 if ((let end = remaining.findCharOnTopLevel('}')) > 0) {
                     node.contents = iterator.source.substring(iterator.position, iterator.position + end).trim()
                     
-                    iterator.skipTo(iterator.position + end + 1)
+                    iterator.skipForward(end + 1)
                     iterator.beginsScope = false
                     iterator.endsScope = false
                     

@@ -122,6 +122,8 @@ class StatementIterator implements Iterator<String> {
         reset()
     }
     
+    public skipForward(Int charCount) => skipTo(position + charCount)
+    
     public skipTo(Int index) {
         checkNewline(position, index, {
             endNewlineCount++
