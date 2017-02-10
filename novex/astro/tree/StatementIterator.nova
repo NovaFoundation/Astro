@@ -13,6 +13,8 @@ class StatementIterator implements Iterator<String> {
     
     visible String source
     
+    visible String remainingSource => source.substring(position)
+    
     visible Int startNewlineCount, endNewlineCount
     visible Int startNewlinePosition, endNewlinePosition
     visible Int startPosition, endPosition, position
