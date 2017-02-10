@@ -122,6 +122,15 @@ class StatementIterator implements Iterator<String> {
         reset()
     }
     
+    public skipTo(Int index) {
+        checkNewline(position, index, {
+            endNewlineCount++
+            endNewlinePosition = _
+        })
+        
+        position = index
+    }
+    
     checkNewline(Int start, Int end, action(Int)) {
         var offset = start
         
