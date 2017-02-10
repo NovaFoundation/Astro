@@ -22,6 +22,8 @@ class ArrayBracketOverload extends Node {
         super(parent, location)
     }
     
+    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) => null
+    
     public generateTemporaryScopeNode() -> Node {
         return new BodyFunction(this)
     }
