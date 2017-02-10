@@ -6,6 +6,7 @@ import "nova/datastruct/list/Stack"
 
 import "novex/astro/util/Location"
 import "novex/astro/SyntaxMessage"
+import "novex/astro/tree/StatementIterator"
 import "novex/astro/tree/nodes/annotations/Annotation"
 import "novex/astro/tree/nodes/functions/closures/ClosureContext"
 import "novex/astro/tree/nodes/functions/closures/ClosureDeclaration"
@@ -16,6 +17,8 @@ class NovaFile extends Node {
     visible Bool isExternal => externalType != null
     
     visible String name, source, externalType
+    
+    visible StatementIterator statements
     
     visible File file
     
