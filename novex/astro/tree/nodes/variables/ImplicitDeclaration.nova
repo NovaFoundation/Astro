@@ -73,6 +73,7 @@ class ImplicitDeclaration extends LocalDeclaration {
     }
     
     public writeType() => ""
+    public writeNova() => name
     
     public cloneTo(ImplicitDeclaration other) => other {
         super.cloneTo(other)
