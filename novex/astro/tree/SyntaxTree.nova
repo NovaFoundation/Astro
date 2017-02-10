@@ -10,6 +10,7 @@ import "nova/thread/Thread"
 import "novex/astro/SyntaxMessage"
 import "novex/astro/Astro"
 import "novex/astro/SyntaxErrorException"
+import "novex/astro/error/UnimplementedOperationException"
 import "novex/astro/util/Location"
 import "novex/astro/tree/nodes/Program"
 import "novex/astro/tree/nodes/Node"
@@ -84,13 +85,17 @@ class SyntaxTree {
                         Console.log(e)
                         
                         node = null
+                    } catch (UnimplementedOperationException e) {
+                        Console.log(e)
+                        
+                        node = null
                     }
                     
                     if (!node) {
-                        Console.writeLine("'#full'")
-                        Console.writeLine("\tbeginsScope: '#statements.beginsScope'\n
-                                           \tendsScope: '#statements.endsScope'\n
-                                           \tparse: '#node'\n")
+                        // Console.writeLine("'#full'")
+                        // Console.writeLine("\tbeginsScope: '#statements.beginsScope'\n
+                        //                    \tendsScope: '#statements.endsScope'\n
+                        //                    \tparse: '#node'\n")
                     }
                     
                     if (node) {
@@ -114,7 +119,13 @@ class SyntaxTree {
                     if (!node) {
                         SyntaxMessage.error("Unable to parse scope declaration '#statement'", parent ?: root, location, throwException: false)
                         
-                        node = parent.generateTemporaryScopeNode()
+                        try {
+                            node = parent.generateTemporaryScopeNode()
+                        } catch (UnimplementedOperationException e) {
+                            Console.log(e)
+                            
+                            return
+                        }
                     }
                     
                     parents.push(node)
