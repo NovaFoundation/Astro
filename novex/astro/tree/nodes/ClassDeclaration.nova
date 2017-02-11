@@ -272,15 +272,17 @@ class ClassDeclaration extends InstanceDeclaration implements Abstractable, Gene
     
     public writeArrayBracketOverload() =>
         arrayBracketOverload ?
-            arrayBracketOverload.toNova() :
+            "\n" + arrayBracketOverload.toNova() + "\n" :
             ""
     
+    public writeFields() => fields.map({ '\n' + _.toNova() }).join() + (fields.count > 0 ? "\n" : "")
+    public writeFunctions() => functions.map({ '\n' + _.toNova() + '\n' }).join()
+    
     public toNova() =>
-        (writeHeader() + " {\n" +
-        writeArrayBracketOverload() +"\n\n" +
-        (fields.map({ _.toNova() }).join("\n") + "\n\n" +
-        functions.map({ _.toNova() }).join("\n\n")).trim() + "\n" +
-        "}").trim()
+        writeHeader() + " {" +
+        writeArrayBracketOverload() +
+        writeFields() +
+        writeFunctions() + "}"
     
     [Override]
     public toString() => writeHeader()
