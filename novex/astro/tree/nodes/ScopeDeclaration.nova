@@ -18,6 +18,12 @@ trait ScopeDeclaration extends Node {
         no set
     }
     
+    // public addGlobalNode(Node child) => super.addGlobalNode(child) {
+    //     if (child.class.isOfType(ExternalBlock)) {
+            
+    //     }
+    // }
+    
     visible Bool containsScope => scope != null
     
     public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) =>

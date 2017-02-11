@@ -135,6 +135,18 @@ class Node implements Annotatable {
         child?.onAdded(this)
     }
     
+    public addGlobalNode(Node child) => false {
+        if (child.class.isOfType(Comment)) {
+            parentFile.pendingComments.add((Comment)child)
+            
+            return true
+        } else if (child.class.isOfType(ExternalBlock)) {
+            
+            
+            return true
+        }
+    }
+    
     public onAdded(Node parent) {}
     public onRemoved(Node from) {}
     
