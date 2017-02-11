@@ -43,4 +43,6 @@ class PropertyFunction extends BodyFunction {
         
         return node
     }
+    
+    public writeBody() => disabled ? "" : super.writeBody()
 }
