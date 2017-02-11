@@ -8,6 +8,8 @@ import "novex/astro/SyntaxMessage"
 import "novex/astro/util/CompilerStringFunctions"
 
 class PropertyFunction extends BodyFunction {
+    public var Bool disabled
+    
     /// Create a new PropertyFunction node.
     /// 
     /// #exampleInputs
