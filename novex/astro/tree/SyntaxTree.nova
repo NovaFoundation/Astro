@@ -80,7 +80,7 @@ class SyntaxTree {
                 
                 if (statement.count > 0) {
                     try {
-                        node = parent.parseStatement(statement, parent, location: location, require: false)
+                        node = parent.parseString(statement, parent, location: location, require: false)
                     } catch (SyntaxErrorException e) {
                         Console.log(e)
                         
