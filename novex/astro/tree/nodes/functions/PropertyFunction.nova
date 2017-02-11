@@ -34,6 +34,13 @@ class PropertyFunction extends BodyFunction {
     ///           be parsed.
     /// return:   The parsed PropertyFunction node, if successful; null otherwise.
     public static parse(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> PropertyFunction => null {
+        var PropertyFunction node = null
         
+        until (node) {
+            node = AccessorFunction.parse(input, parent, location, require)
+            node = MutatorFunction.parse(input, parent, location, require)
+        }
+        
+        return node
     }
 }
