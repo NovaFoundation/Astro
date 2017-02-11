@@ -116,12 +116,12 @@ class BodyFunction extends FunctionDeclaration implements ScopeDeclaration {
                 "")
     
     public writeBody() =>
-        inlineBody ?
+        " " + (inlineBody ?
             writeInlineBody() :
-            scope.toNova()
+            scope.toNova())
     
     public writeNova() =>
-        writeHeader() + " " + writeBody()
+        writeHeader() + writeBody()
     
     public cloneTo(BodyFunction other) => other {
         super.cloneTo(other)
