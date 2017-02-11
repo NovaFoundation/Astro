@@ -53,4 +53,6 @@ class MutatorFunction extends PropertyFunction {
             return node
         }
     }
+    
+    public writeHeader() => (disabled ? "no " : "") + "set"
 }
