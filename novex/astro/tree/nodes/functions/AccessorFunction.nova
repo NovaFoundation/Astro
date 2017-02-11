@@ -1,5 +1,6 @@
 package "novex/astro/tree/nodes/functions"
 
+import "novex/astro/InvalidParseException"
 import "novex/astro/tree/nodes/Node"
 import "novex/astro/tree/nodes/Scope"
 import "novex/astro/util/Location"
@@ -35,5 +36,20 @@ class AccessorFunction extends PropertyFunction {
     /// return:   The parsed AccessorFunction node, if successful; null otherwise.
     public static parse(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> AccessorFunction => null {
         
+        if (values.last == "get") {
+            let node = new AccessorFunction(parent, location)
+            
+            if (values.count > 1) {
+                if (values.count > 2) {
+                    toss new InvalidParseException("Too many modifiers for accessor function declaration '#input'", node)
+                } else if (values.first != "no") {
+                    toss new InvalidParseException("Invlaid modifier '#values.first' for accessor function declaration '#input'", node)
+                } else {
+                    node.disabled = true
+                }
+            }
+            
+            return node
+        }
     }
 }
