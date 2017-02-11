@@ -1,5 +1,6 @@
 package "novex/astro/tree/nodes/functions"
 
+import "novex/astro/InvalidParseException"
 import "novex/astro/tree/nodes/Node"
 import "novex/astro/tree/nodes/Scope"
 import "novex/astro/util/Location"
@@ -34,6 +35,22 @@ class MutatorFunction extends PropertyFunction {
     ///           be parsed.
     /// return:   The parsed MutatorFunction node, if successful; null otherwise.
     public static parse(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> MutatorFunction => null {
+        let values = input.splitValues()
         
+        if (values.last == "set") {
+            let node = new MutatorFunction(parent, location)
+            
+            if (values.count > 1) {
+                if (values.count > 2) {
+                    toss new InvalidParseException("Too many modifiers for mutator function declaration '#input'", node)
+                } else if (values.first != "no") {
+                    toss new InvalidParseException("Invlaid modifier '#values.first' for mutator function declaration '#input'", node)
+                } else {
+                    node.disabled = true
+                }
+            }
+            
+            return node
+        }
     }
 }
