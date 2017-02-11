@@ -88,30 +88,35 @@ class StatementIterator implements Iterator<String> {
         var nextIndex  = source.nextNonWhitespaceIndex(position)
         var nextChar   = source[nextIndex]
         var afterIndex = source.nextNonWhitespaceIndex(nextIndex + 1)
-        var charAfter  = source[afterIndex]
         
-        beginsScope = position < source.count && nextChar == '{'
-        endsScope   = position < source.count && nextChar == '}'
-        
-        scopesEnded = 0
-        
-        if (!endsScope && charAfter == '}') {
-            endsScope = true
-            position = afterIndex
-        }
-        
-        if (endsScope) {
-            var current = source.nextNonWhitespaceIndex(position)
+        if (afterIndex >= 0) {
+            var charAfter  = source[afterIndex]
             
-            while (current > 0 && source[current] == '}') {
-                scopesEnded++
-                
-                current = source.nextNonWhitespaceIndex(current + 1)
+            beginsScope = position < source.count && nextChar == '{'
+            endsScope   = position < source.count && nextChar == '}'
+            
+            scopesEnded = 0
+            
+            if (!endsScope && charAfter == '}') {
+                endsScope = true
+                position = afterIndex
             }
             
-            position = current < 0 ? source.count : current
+            if (endsScope) {
+                var current = source.nextNonWhitespaceIndex(position)
+                
+                while (current > 0 && source[current] == '}') {
+                    scopesEnded++
+                    
+                    current = source.nextNonWhitespaceIndex(current + 1)
+                }
+                
+                position = current < 0 ? source.count : current
+            } else {
+                position++
+            }
         } else {
-            position++
+            position = source.count
         }
     }
     
