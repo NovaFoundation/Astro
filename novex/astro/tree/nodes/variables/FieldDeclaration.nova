@@ -3,8 +3,12 @@ package "novex/astro/tree/nodes/variables"
 import "novex/astro/tree/nodes/Node"
 import "novex/astro/tree/nodes/Value"
 import "novex/astro/tree/nodes/functions/BodyFunction"
+import "novex/astro/tree/nodes/functions/PropertyFunction"
+import "novex/astro/tree/nodes/functions/AccessorFunction"
+import "novex/astro/tree/nodes/functions/MutatorFunction"
 import "novex/astro/tree/nodes/operations/Assignable"
 import "novex/astro/SyntaxErrorException"
+import "novex/astro/SyntaxMessage"
 import "novex/astro/util/Location"
 
 import "novex/astro/util/CompilerStringFunctions"
@@ -18,6 +22,9 @@ class FieldDeclaration extends InstanceDeclaration implements Assignable {
     
     visible Bool isTwoWayAccessor = false
     
+    visible var AccessorFunction accessor
+    visible var MutatorFunction mutator
+    
     /// Create a new FieldDeclaration node.
     /// #exampleInputs
     /// 
@@ -25,6 +32,21 @@ class FieldDeclaration extends InstanceDeclaration implements Assignable {
     /// location: The location of the input text in the source file.
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
+    }
+    
+    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) =>
+        PropertyFunction.parse(input, parent, location, require)
+    
+    public addChild(Node child) {
+        if (addGlobalNode(child)) {
+            
+        } else if (child.class.isOfType(AccessorFunction)) {
+            accessor = (AccessorFunction)child
+        } else if (child.class.isOfType(MutatorFunction)) {
+            mutator = (MutatorFunction)child
+        } else {
+            SyntaxMessage.error("Statement '#child' used in wrong context", child)
+        }
     }
     
     public generateTemporaryScopeNode() -> Node {
@@ -125,15 +147,13 @@ class FieldDeclaration extends InstanceDeclaration implements Assignable {
         return last < input.count - 1 ? last : 0
     }
     
-    static findAccessorIndex(String input, Int defaultReturnValue = -1) -> Int {
+    static findAccessorIndex(String input, Int defaultReturnValue = -1) => defaultReturnValue {
         var index = input.findOperatorOnTopLevel("=>")
         
         if (index < 0) {
             index = input.findOperatorOnTopLevel("<=>")
             
-            if (index < 0) {
-                return defaultReturnValue
-            } else {
+            if (index >= 0) {
                 return index
             }
         } else {
@@ -147,7 +167,22 @@ class FieldDeclaration extends InstanceDeclaration implements Assignable {
             (isTwoWayAccessor ? " <=> " : " => ") + accessorValue.toNova() :
             ""
     
-    public writeNova() => super.writeNova() + writeInitializationValue() + writeAccessorValue()
+    public writePropertyFunctions() => "" {
+        if (accessor || mutator) {
+            var output = " {"
+            
+            if (accessor) {
+                output += "\n" + accessor.writeNova() + "\n"
+            }
+            if (mutator) {
+                output += "\n" + mutator.writeNova() + "\n"
+            }
+            
+            return output + "}"
+        }
+    }
+    
+    public writeNova() => super.writeNova() + writeInitializationValue() + writeAccessorValue() + writePropertyFunctions()
     
     public cloneTo(FieldDeclaration other) => other {
         super.cloneTo(other)
