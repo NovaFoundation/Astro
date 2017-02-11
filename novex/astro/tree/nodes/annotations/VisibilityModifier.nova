@@ -2,10 +2,10 @@ package "novex/astro/tree/nodes/annotations"
 
 import "novex/astro/SyntaxErrorException"
 import "novex/astro/tree/nodes/Node"
-import "novex/astro/tree/nodes/variables/InstanceDeclaration"
+import "novex/astro/tree/nodes/variables/VariableDeclaration"
 
 trait VisibilityModifier extends Annotation implements Modifier {
-    visible static immutable Class<Node>[] applicationTypes => [InstanceDeclaration]
+    visible static immutable Class<Node>[] applicationTypes => [VariableDeclaration]
     
     public checkApplication(Node toNode, Bool throwError = true) -> Bool {
         if (toNode.annotations && toNode.annotations.any({ _.class.isOfType(VisibilityModifier) })) {
