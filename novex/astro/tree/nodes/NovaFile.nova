@@ -181,6 +181,11 @@ class NovaFile extends Node {
             packageDeclaration.toNova() + "\n\n" :
             ""
     
+    public writeImports() =>
+        (let userImports = imports.filter({ _.userAdded })).count > 0 ?
+            userImports.map({ _.toNova() + "\n" }).join() + "\n" :
+            ""
+    
     public toNova() =>
         writePackageDeclaration() +
         writeImports() +
