@@ -23,6 +23,7 @@ class NovaFile extends Node {
     visible File file
     
     visible Stack<Annotation> pendingAnnotations = new Stack()
+    visible Comment[] pendingComments = new Comment[0]
     
     visible ImportList importList
     
