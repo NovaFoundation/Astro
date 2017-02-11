@@ -35,6 +35,7 @@ class AccessorFunction extends PropertyFunction {
     ///           be parsed.
     /// return:   The parsed AccessorFunction node, if successful; null otherwise.
     public static parse(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> AccessorFunction => null {
+        let values = input.splitValues()
         
         if (values.last == "get") {
             let node = new AccessorFunction(parent, location)
@@ -52,4 +53,6 @@ class AccessorFunction extends PropertyFunction {
             return node
         }
     }
+    
+    public writeHeader() => (disabled ? "no " : "") + "get"
 }
