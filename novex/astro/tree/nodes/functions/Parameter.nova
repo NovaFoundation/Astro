@@ -41,14 +41,14 @@ class Parameter extends LocalDeclaration {
     ///           be parsed.
     /// return:   The parsed Parameter node, if successful; null otherwise.
     public static parse(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Parameter => null {
-        var closure = ClosureDeclaration.parse(input, parent, location, require)
+        let closure = ClosureDeclaration.parse(input, parent, location, require)
         
         if (closure) {
             return closure
         }
         
         String defaultValue = null
-        var assignmentIndex = input.indexOf('=')
+        let assignmentIndex = input.indexOf('=')
         
         if (assignmentIndex > 0 && input.isStrictlyOperator('=', assignmentIndex)) {
             defaultValue = input.substring(assignmentIndex + 1).trim()
@@ -56,10 +56,10 @@ class Parameter extends LocalDeclaration {
             input = input.substring(end: assignmentIndex).trim()
         }
         
-        var declaration = LocalDeclaration.parse(input, parent, location, require)
+        let declaration = LocalDeclaration.parse(input, parent, location, require)
         
         if (declaration) {
-            var node = new Parameter(parent, location)
+            let node = new Parameter(parent, location)
             
             if (defaultValue && !(node.defaultValue = Value.parse(defaultValue, node, location, require))) {
                 toss new InvalidParseException("Failed to parse default value '#defaultValue' for parameter '#input'", node)
