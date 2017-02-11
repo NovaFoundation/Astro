@@ -97,7 +97,9 @@ class NovaFile extends Node {
     }
 	
     public addChild(Node child) {
-        if (child.class.isOfType(ClassDeclaration)) {
+        if (addGlobalNode(child)) {
+            
+        } else if (child.class.isOfType(ClassDeclaration)) {
             addClass((ClassDeclaration)child)
         } else if (child.class.isOfType(Import)) {
             imports.add((Import)child)

@@ -60,7 +60,9 @@ class ClassDeclaration extends InstanceDeclaration implements Abstractable, Gene
     }
     
     public addChild(Node child) {
-        if (child.class.isOfType(FieldDeclaration)) {
+        if (addGlobalNode(child)) {
+            
+        } else if (child.class.isOfType(FieldDeclaration)) {
             fields.add(child)
         } else if (child.class.isOfType(FunctionDeclaration)) {
             functions.add(child)

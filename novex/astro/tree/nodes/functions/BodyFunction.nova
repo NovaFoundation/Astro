@@ -30,7 +30,11 @@ class BodyFunction extends FunctionDeclaration implements ScopeDeclaration {
     }
     
     public addChild(Node child) {
-        scope.children.add(child)
+        if (!addGlobalNode(child)) {
+            scope.children.add(child)
+        }
+        
+        super.addChild(child)
     }
     
     /// Parse the given input into a BodyFunction node. If the input cannot be parsed
