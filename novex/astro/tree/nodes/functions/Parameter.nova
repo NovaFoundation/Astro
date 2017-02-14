@@ -86,4 +86,9 @@ class Parameter extends LocalDeclaration {
         
         other.defaultValue = defaultValue
     }
+    
+    public writeDefaultValue() =>
+        defaultValue ?
+            " = " + defaultValue.toNova() :
+            ""
 }
