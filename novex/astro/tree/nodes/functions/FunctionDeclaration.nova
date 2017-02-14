@@ -62,9 +62,7 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
                     node.objectReference.name = "this"
                     node.objectReference.type = node.parentClass.type
                 }
-                if (node.name == "zip") {
-                    Console.log("!!!!!!!!!!!!#node.genericParameters")
-                }
+                
                 return node
             }
         }
@@ -82,6 +80,7 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
     
     static findGenericParameters(String input) =>
         (let start = input.findCharOnTopLevel('<')) >= 0 &&
+        start < input.indexOf('(') &&
         (let end = input.findEndingMatch(start, '<', '>')) > 0 ?
             input.substring(start, end + 1).trim() :
             null
