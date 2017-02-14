@@ -86,25 +86,19 @@ class LambdaExpression extends Value implements CallableFunction, ScopeDeclarati
     }
     
     findOperation(String input) -> String => null {
-        var start = input.findCharOnTopLevel('{')
-        
-        if (start >= 0) {
-            var end = input.findEndingMatch(start, '{', '}')
-            
-            return input.substring(start + 1, end).trim()
+        if ((var start = input.findCharOnTopLevel('{')) >= 0) {
+            if ((var end = input.findEndingMatch(start, '{', '}')) > 0) {
+                return input.substring(start + 1, end).trim()
+            }
         }
         
         toss new InvalidParseException("Could not find lambda expression operation in '#input'", this)
     }
     
     parseOperation(String input) => false {
-        var operation = findOperation(input)
-        
-        if (operation) {
+        if (let operation = findOperation(input)) {
             if (operation.count > 0) {
-                var statements = operation.getStatements(new Stack([this]))
-                
-                for (statement in statements) {
+                for (statement in operation.getStatements(new Stack([this]))) {
                     if (let node = scope.parseStatement(statement, this)) {
                         scope.addChild(node)
                     } else {

@@ -76,7 +76,7 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
             null
     
     static findReturnType(String input) -> String {
-        var start = input.indexOf('(')
+        let start = input.indexOf('(')
         
         if (start < 0) {
             return null
@@ -101,21 +101,11 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
         return input.substring(start: end + 2).trim()
     }
     
-    static findParameters(String input) -> String {
-        var start = input.indexOf('(')
-        
-        if (start < 0) {
-            return null
-        }
-        
-        var end = input.findEndingMatch(start, '(', ')')
-        
-        if (end < 0) {
-            return null
-        }
-        
-        return input.substring(start + 1, end).trim()
-    }
+    static findParameters(String input) =>
+        (let start = input.indexOf('(')) >= 0 &&
+        (let end = input.findEndingMatch(start, '(', ')')) >= 0 ?
+            input.substring(start + 1, end).trim() :
+            null
     
     public parseSignature(String signature, Bool require) =>
         signature.splitValues().filterEmpty().all((word, index, words) => {
