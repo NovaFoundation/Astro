@@ -47,11 +47,20 @@ class Parameter extends LocalDeclaration {
             return closure
         }
         
+    }
+    
+    public parseDefaultValueAndGetRemaining(String input) => input {
         String defaultValue = null
         let assignmentIndex = input.indexOf('=')
         
         if (assignmentIndex > 0 && input.isStrictlyOperator('=', assignmentIndex)) {
             defaultValue = input.substring(assignmentIndex + 1).trim()
+            
+            if (!parseDefaultValue(defaultValue)) {
+                toss new InvalidParseException("Failed to parse default value '#defaultValue' for parameter '#input'", this)
+                
+                return null
+            }
             
             input = input.substring(end: assignmentIndex).trim()
         }
