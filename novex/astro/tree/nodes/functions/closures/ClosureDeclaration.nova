@@ -2,6 +2,7 @@ package "novex/astro/tree/nodes/functions/closures"
 
 import "novex/astro/tree/nodes/Node"
 import "novex/astro/tree/nodes/Type"
+import "novex/astro/tree/nodes/Value"
 import "novex/astro/tree/nodes/functions/Parameter"
 import "novex/astro/tree/nodes/functions/ParameterList"
 import "novex/astro/tree/nodes/functions/CallableFunction"
@@ -58,6 +59,12 @@ class ClosureDeclaration extends Parameter implements CallableFunction {
                     }
                 }
             }
+        }
+    }
+    
+    public parseDefaultValue(String input) => defaultValue {
+        until (defaultValue) {
+            defaultValue = LambdaExpression.parse(input, this, location)
         }
     }
     
