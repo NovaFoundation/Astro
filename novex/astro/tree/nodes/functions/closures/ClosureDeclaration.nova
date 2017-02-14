@@ -89,5 +89,5 @@ class ClosureDeclaration extends Parameter implements CallableFunction {
             "-> #type.toNova()" :
             ""
     
-    public writeNova() => ("#{name}#parameterList.toNova() " + writeType()).trim()
+    public writeNova() => ("#{name}#parameterList.toNova() " + writeType()).trim() + writeDefaultValue()
 }
