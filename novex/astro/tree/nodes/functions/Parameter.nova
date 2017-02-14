@@ -73,17 +73,11 @@ class Parameter extends LocalDeclaration {
             
             input = input.substring(end: assignmentIndex).trim()
         }
-        
-        let declaration = LocalDeclaration.parse(input, parent, location, require)
-        
-        if (declaration) {
-            let node = new Parameter(parent, location)
-            
-            if (defaultValue && !(node.defaultValue = Value.parse(defaultValue, node, location, require))) {
-                toss new InvalidParseException("Failed to parse default value '#defaultValue' for parameter '#input'", node)
-            } else {
-                return (Parameter)declaration.cloneTo(node)
-            }
+    }
+    
+    public parseDefaultValue(String input) => defaultValue {
+        until (defaultValue) {
+            defaultValue = Value.parse(input, this, location)
         }
     }
     
