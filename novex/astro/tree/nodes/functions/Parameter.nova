@@ -47,6 +47,15 @@ class Parameter extends LocalDeclaration {
             return closure
         }
         
+        let node = new Parameter(parent, location)
+        
+        if (input = node.parseDefaultValueAndGetRemaining(input)) {
+            let declaration = LocalDeclaration.parse(input, parent, location, require)
+            
+            if (declaration) {
+                return (Parameter)declaration.cloneTo(node)
+            }
+        }
     }
     
     public parseDefaultValueAndGetRemaining(String input) => input {
