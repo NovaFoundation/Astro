@@ -52,7 +52,7 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
             (let returnType = findReturnType(input))) {
             var node = new FunctionDeclaration(parent, location)
             
-            if (let genericParams = findGenericParameters(input) && !node.parseGenericParameters(parameters, require)) {
+            if ((let genericParams = findGenericParameters(input)) && !node.parseGenericParameters(genericParams, require)) {
                 toss new InvalidParseException("Could not parse method generic parameters '#genericParams'", node)
             } else if (node.parseSignature(signature, require) &&
                 node.parseParameters(parameters, require) &&
@@ -62,7 +62,9 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
                     node.objectReference.name = "this"
                     node.objectReference.type = node.parentClass.type
                 }
-                
+                if (node.name == "zip") {
+                    Console.log("!!!!!!!!!!!!#node.genericParameters")
+                }
                 return node
             }
         }

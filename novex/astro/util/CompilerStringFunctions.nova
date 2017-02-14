@@ -510,7 +510,7 @@ extension CompilerStringFunctions {
     public findStringOnTopLevel(String this, String needle, Int start = 0, Bool searchGenerics = false, Int defaultReturnValue = -1) =>
         findStringOnTopLevel([needle], start, searchGenerics, defaultReturnValue)
         
-    public findStringOnTopLevel(String this, String[] needles, var Int start = 0, Bool searchGenerics = false, Int defaultReturnValue = -1) -> Int {
+    public findStringOnTopLevel(String this, String[] needles, var Int start = 0, Bool searchGenerics = false, Int defaultReturnValue = -1) => defaultReturnValue {
         while (start < count) {
             let c = chars[start]
             
@@ -537,8 +537,6 @@ extension CompilerStringFunctions {
                 }
             }
         }
-        
-        return defaultReturnValue
     }
     
     /**
