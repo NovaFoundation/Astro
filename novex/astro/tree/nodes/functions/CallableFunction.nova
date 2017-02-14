@@ -13,7 +13,7 @@ import "novex/astro/SyntaxMessage"
 
 import "novex/astro/util/CompilerStringFunctions"
 
-trait CallableFunction implements GenericCompatible {
+trait CallableFunction extends Identifier implements GenericCompatible {
     visible ParameterList parameterList
     visible Parameter[] parameters => parameterList.parameters
     
