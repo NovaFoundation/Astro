@@ -52,7 +52,9 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
             (let returnType = findReturnType(input))) {
             var node = new FunctionDeclaration(parent, location)
             
-            if (node.parseSignature(signature, require) &&
+            if (let genericParams = findGenericParameters(input) && !node.parseGenericParameters(parameters, require)) {
+                toss new InvalidParseException("Could not parse method generic parameters '#genericParams'", node)
+            } else if (node.parseSignature(signature, require) &&
                 node.parseParameters(parameters, require) &&
                 node.parseType(returnType)) {
                 if (!node.isStatic) {
