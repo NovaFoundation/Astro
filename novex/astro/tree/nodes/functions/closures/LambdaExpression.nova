@@ -133,5 +133,5 @@ class LambdaExpression extends Value implements CallableFunction, ScopeDeclarati
             ""
     
     public writeNova() =>
-        writeParameterClause() + scope.toNova()
+        writeParameterClause() + scope.writeNova(true)
 }
