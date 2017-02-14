@@ -73,6 +73,11 @@ class FunctionDeclaration extends InstanceDeclaration implements CallableFunctio
     static findSignature(String input) =>
         (let start = input.indexOf('(')) >= 0 ?
             input.substring(end: start).trim() :
+    
+    static findGenericParameters(String input) =>
+        (let start = input.findCharOnTopLevel('<')) >= 0 &&
+        (let end = input.findEndingMatch(start, '<', '>')) > 0 ?
+            input.substring(start, end + 1).trim() :
             null
     
     static findReturnType(String input) -> String {
