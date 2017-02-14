@@ -124,7 +124,7 @@ class SyntaxTree {
                         } catch (UnimplementedOperationException e) {
                             Console.log(e)
                             
-                            return
+                            break
                         }
                     }
                     
