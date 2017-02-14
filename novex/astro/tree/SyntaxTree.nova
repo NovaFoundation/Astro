@@ -149,11 +149,7 @@ class SyntaxTree {
             
             Console.log("#file took #{timer.stop().duration}ms")
             
-            Thread.lock()
-            
-            compileTimes[file.fileLocation] = timer.duration
-            
-            Thread.unlock()
+            Thread.sync({ compileTimes[file.fileLocation] = timer.duration })
         })
     }
     
