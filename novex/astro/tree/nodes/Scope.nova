@@ -71,26 +71,6 @@ class Scope extends NodeList {
     	super(parent, location)
     }
     
-    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node {
-        Node node = null
-        
-        until (node) {
-            node = Assignment.parse(input, parent, location, require)
-            node = ExternalBlock.parse(input, parent, location, require)
-        	node = Accessible.parseDotAccess(input, parent, require: require)
-            node = IfStatement.parse(input, parent, location, require)
-            node = ElseStatement.parse(input, parent, location, require)
-            node = Throw.parse(input, parent, location, require)
-            node = Loop.parse(input, parent, location, require)
-            node = Return.parse(input, parent, location, require)
-            node = LocalDeclaration.parse(input, parent, location, require)
-            node = Operation.parse(input, parent, location, require)
-            node = Value.parse(input, parent, location, require)
-        }
-        
-        return node
-    }
-    
     public generateTemporaryScopeNode() -> Node {
         return new Scope(this)
     }

@@ -25,7 +25,4 @@ trait ScopeDeclaration extends Node {
     // }
     
     visible Bool containsScope => scope != null
-    
-    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) =>
-        scope.parseStatement(input, this, location, require)
 }
