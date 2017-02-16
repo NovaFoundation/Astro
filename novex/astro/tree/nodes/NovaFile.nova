@@ -35,8 +35,8 @@ class NovaFile extends Node {
     
     visible String fileLocation =>
         packageDeclaration.location ?
-            packageDeclaration.location + "/" + name + ".nova" :
-            name + ".nova"
+            packageDeclaration.location + "/" + file.name :
+            file.name
     
     public ClassDeclaration classDeclaration => classes.firstWhere({ _.name.equals(name) })
     
@@ -191,5 +191,5 @@ class NovaFile extends Node {
         writeImports() +
         classes.map({ _.toNova() }).join("\n")
     
-    public toString() => "#{name}.nova"
+    public toString() => file.name
 }
