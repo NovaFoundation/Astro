@@ -43,7 +43,7 @@ class Return extends Node {
     public static parse(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Return => null {
         if (input.nextWord() == "return") {
             var node = new Return(parent, location)
-            var contents = input.substring(7).trim()
+            var contents = input.substring("return".count).trim()
             
             if (contents.count > 0) {
                 node.value = Value.parse(contents, node)
