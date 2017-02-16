@@ -37,6 +37,10 @@ class Astro {
     
     public construct(visible Novac compiler) {}
     
+    static filterInputFiles(File file) -> Bool {
+        return file.extensionName.toLowerCase() == (String)compiler.ARGS["input"]
+    }
+    
     public build() -> SyntaxTree {
         String directory = FileUtils.getWorkingDirectoryPath() + "/"
         
@@ -58,7 +62,7 @@ class Astro {
             let fileTimer = new Timer().start()
             
             files = parentDir.getChildFiles(true)
-                .filter({ _.extension.toLowerCase() == ".nova" })
+                .filter(filterInputFiles)
                 .map({ new NovaFile(_, program) })
             
             fileTimer.stop()
