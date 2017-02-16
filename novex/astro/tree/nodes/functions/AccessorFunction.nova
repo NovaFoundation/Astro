@@ -19,40 +19,5 @@ class AccessorFunction extends PropertyFunction {
         super(parent, location)
     }
     
-    /// Parse the given input into a AccessorFunction node. If the input cannot be parsed
-    /// into a AccessorFunction node, null is returned.
-    /// 
-    /// #exampleInputs:
-    ///     Example inputs:
-    ///      * 
-    ///      * 
-    ///      * 
-    /// 
-    /// input:    The input string to parse into a AccessorFunction instance.
-    /// parent:   The parent of the AccessorFunction node.
-    /// location: The location of the input text in the source file.
-    /// require:  Whether or not to throw a syntax error if the input could not
-    ///           be parsed.
-    /// return:   The parsed AccessorFunction node, if successful; null otherwise.
-    public static parse(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> AccessorFunction => null {
-        let values = input.splitValues()
-        
-        if (values.last == "get") {
-            let node = new AccessorFunction(parent, location)
-            
-            if (values.count > 1) {
-                if (values.count > 2) {
-                    toss new InvalidParseException("Too many modifiers for accessor function declaration '#input'", node)
-                } else if (values.first != "no") {
-                    toss new InvalidParseException("Invlaid modifier '#values.first' for accessor function declaration '#input'", node)
-                } else {
-                    node.disabled = true
-                }
-            }
-            
-            return node
-        }
-    }
-    
     public writeHeader() => (disabled ? "no " : "") + "get"
 }

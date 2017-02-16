@@ -17,26 +17,6 @@ trait CallableFunction extends Identifier implements GenericCompatible {
     visible ParameterList parameterList
     visible Parameter[] parameters => parameterList.parameters
     
-    public parseParameter(String parameter, Bool require = true) =>
-        Parameter.parse(parameter, parameterList, ((Node)this).location)
-    
-    public parseParameterAndAnnotations(String parameter, Bool require = true) => false {
-        var annotations = SyntaxTree.searchAnnotations(parameter)
-        var param = parseParameter(annotations.remainingStatement, require)
-        
-        if (param != null) {
-            parameters.add(param)
-            annotations.addTo(param)
-            
-            return true
-        }
-        
-        SyntaxMessage.errorIf("Invalid parameter '#parameter'", (Node)this, require)
-    }
-    
-    public parseParameters(String parameters, Bool require = true) =>
-        parameters.splitAtCommas().all({ parseParameterAndAnnotations(_, require) }, false)
-    
     public compatibleArguments(Value[] arguments) -> Bool {
         return true
     }
