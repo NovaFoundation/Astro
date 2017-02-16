@@ -88,14 +88,14 @@ class Type {
         isPrimitiveType ||
         parent.parentFile.imports.any({ _.className.equals(name) })
     
-    public writeGenericParameters() =>
+    public writeGenericArguments() =>
         genericArguments.count > 0 ?
             "<#{genericArguments.join(", ")}>" :
             ""
     
     public toString() => writeNova()
     public toNova() => writeNova()
-    public writeNova() => "#name" + writeGenericParameters()
+    public writeNova() => "#name" + writeGenericArguments()
     
     public cloneTo(Type other) => other {
         other.name = name

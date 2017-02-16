@@ -71,7 +71,7 @@ class ArrayType extends Type {
     public writeArray() =>
         "[]".repeat(arrayDimensions)
     
-    public writeNova() => "#type.name" + writeArray() + writeGenericParameters()
+    public writeNova() => "#type.name" + writeArray() + writeGenericArguments()
     
     public cloneTo(ArrayType other) => other {
         super.cloneTo(other)
