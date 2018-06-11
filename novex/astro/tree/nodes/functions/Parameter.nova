@@ -10,7 +10,7 @@ import "novex/astro/util/Location"
 import "novex/astro/util/CompilerStringFunctions"
 
 class Parameter extends LocalDeclaration {
-    public Value defaultValue
+    public var Value defaultValue
     
     visible ParameterList parentParameterList =>
         parent.class.isOfType(ParameterList) ? (ParameterList)parent : null
@@ -30,11 +30,4 @@ class Parameter extends LocalDeclaration {
         
         other.defaultValue = defaultValue
     }
-    
-    public writeDefaultValue() =>
-        defaultValue ?
-            " = " + defaultValue.toNova() :
-            ""
-    
-    public writeNova() => super.writeNova() + writeDefaultValue()
 }

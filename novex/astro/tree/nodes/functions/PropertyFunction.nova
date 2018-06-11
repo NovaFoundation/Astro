@@ -19,6 +19,4 @@ class PropertyFunction extends BodyFunction {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeBody() => disabled ? "" : super.writeBody()
 }

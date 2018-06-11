@@ -33,7 +33,4 @@ class Try extends ExceptionHandler implements ScopeDeclaration {
         
         scope = new Scope(this, location)
     }
-    
-    public writeNova() =>
-        "try #scope.toNova()"
 }

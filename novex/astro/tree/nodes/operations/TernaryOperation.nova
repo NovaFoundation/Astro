@@ -28,7 +28,4 @@ class TernaryOperation extends Value {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeNova() =>
-        "#condition.toNova() ? #trueValue.toNova() : #falseValue.toNova()"
 }

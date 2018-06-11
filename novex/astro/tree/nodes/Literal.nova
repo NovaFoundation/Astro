@@ -21,9 +21,5 @@ class Literal extends Value implements Accessible {
     /// location: The location of the input text in the source file.
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
-        
-        
     }
-    
-    public writeNova() => value + writeArrayAccess() + writeAccessedNodes()
 }

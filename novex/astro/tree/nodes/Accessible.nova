@@ -11,7 +11,7 @@ import "novex/astro/tree/nodes/functions/FunctionCall"
 import "novex/astro/util/CompilerStringFunctions"
 
 trait Accessible extends Value {
-    public Bool safeNavigation
+    public var Bool safeNavigation
     
     /**
      * Get the next node that is accessed by the specified node.<br>
@@ -26,7 +26,7 @@ trait Accessible extends Value {
      * 
      * @return The next node that is accessed by the specified node.
      */
-    public Accessible accessedNode
+    public var Accessible accessedNode
     
     public Accessible returnedNode {
         get {
@@ -116,7 +116,7 @@ trait Accessible extends Value {
      *      no matches, null is returned.
      */
     public getNextAccessingOfType(Class[] types, Bool opposite) -> Accessible {
-        Accessible current = accessingNode
+        var Accessible current = accessingNode
         
         while (current && SyntaxUtils.checkTypes(types, current.class) == opposite) {
             current = current.accessingNode
@@ -153,8 +153,8 @@ trait Accessible extends Value {
      *      a match, null is returned.
      */
     public getLastAccessingOfType(Class[] types, Bool opposite, Bool inclusive = false) -> Accessible {
-        Accessible previous = null
-        Accessible current  = this
+        var Accessible previous = null
+        var Accessible current  = this
         
         if (inclusive && SyntaxUtils.checkTypes(types, current.class) != opposite) {
             return current
@@ -170,8 +170,8 @@ trait Accessible extends Value {
     
     public getLastAccessedOfType(Class type, Bool opposite) => getLastAccessedOfType([type], opposite)
     public getLastAccessedOfType(Class[] types, Bool opposite) -> Accessible {
-        Accessible previous = null
-        Accessible current  = this
+        var Accessible previous = null
+        var Accessible current = this
         
         while (current) {
             if (SyntaxUtils.checkTypes(types, current.class) != opposite) {
@@ -185,8 +185,8 @@ trait Accessible extends Value {
     }
     
     public getLastAccessed() -> Accessible {
-        Accessible previous = this
-        Accessible current  = this
+        var Accessible previous = this
+        var Accessible current = this
         
         while (current) {
             previous = current
@@ -215,7 +215,7 @@ trait Accessible extends Value {
      *      match, null is returned.
      */
     public getNextAccessedOfType(Class[] types) -> Accessible {
-        Accessible current = accessedNode
+        var Accessible current = accessedNode
         
         while (current && !SyntaxUtils.checkTypes(types, ((Object)current).class)) {
             current = current.accessedNode
@@ -292,42 +292,8 @@ trait Accessible extends Value {
         return parentClass
     }
     
-    public static parse(String input, Node parent = null, Bool require = true) -> Accessible => null {
-        var node = Value.parse(input, parent, require: require)
-        
-        if (!node.class.isOfType(Accessible)) {
-            toss new InvalidParseException("Could not parse Accessible '#input', received '#node'")
-        } else {
-            return (Accessible)node
-        }
-    }
-    
-    public static parseDotAccess(String input, Node parent, Bool require = true) -> Node => null {
-        if (let fragments = input.splitAtDotOperator()) {
-            if (let root = parse(fragments.first, parent, require: require)) {
-                var current = root
-                
-                if (fragments.skip(1).all({
-                    if (let accessed = parse(_, parent: current, require: require)) {
-                        current.accessedNode = accessed
-                        current = accessed
-                        
-                        return true
-                    } else {
-                        return false
-                    }
-                })) {
-                    return root
-                }
-            }
-        }
-    }
-    
     public cloneTo(Accessible other) => other {
         other.safeNavigation = safeNavigation
         other.accessedNode = accessedNode
     }
-    
-    public writeAccessedNodes() -> String =>
-        doesAccess ? ".#accessedNode.toNova()" : ""
 }

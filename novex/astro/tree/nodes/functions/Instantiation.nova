@@ -17,9 +17,9 @@ import "novex/astro/util/CompilerStringFunctions"
 /// since: 
 /// version: 
 class Instantiation extends FunctionCall {
-    visible ObjectNotation objectNotation
+    visible var ObjectNotation objectNotation
     
-    visible Instantiation parentInstantiation => this
+    visible var Instantiation parentInstantiation => this
     
     /// Create a new Instantiation node.
     /// 
@@ -36,11 +36,4 @@ class Instantiation extends FunctionCall {
         
         objectNotation.addChild(node)
     }
-    
-    public writeObjectNotation() =>
-        objectNotation ?
-            " " + objectNotation.toNova() :
-            ""
-    
-    public writeNova() => "new #super.writeNova()"
 }

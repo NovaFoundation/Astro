@@ -28,12 +28,7 @@ class UnaryOperation extends Value {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeNova() =>
-        operatorSide == LEFT ?
-            "#{operator.toNova()}#{operand.toNova()}" :
-            "#{operand.toNova()}#{operator.toNova()}"
-    
+
     // visible static HashMap<String, Int> SIDES
     // visible static HashMap<String, Bool> REQUIRE_VARIABLE
     

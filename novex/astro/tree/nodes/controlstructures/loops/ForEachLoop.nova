@@ -18,8 +18,8 @@ import "novex/astro/util/CompilerStringFunctions"
 /// since: 
 /// version: 
 class ForEachLoop extends Loop {
-    visible LocalDeclaration variable
-    visible Value iterator
+    visible var LocalDeclaration variable
+    visible var Value iterator
     
     /// Create a new ForEachLoop node.
     /// 
@@ -37,7 +37,4 @@ class ForEachLoop extends Loop {
         other.variable = variable
         other.iterator = iterator
     }
-    
-    public writeNova() =>
-        "for (#variable.name in #iterator.toNova()) #scope.toNova()"
 }

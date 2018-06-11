@@ -27,7 +27,7 @@ class NovaFile extends Node {
     
     visible ImportList importList
     
-    visible Package packageDeclaration
+    visible var Package packageDeclaration
     visible Import[] imports => importList.imports
     
     visible ClosureDeclaration[] closures = new ClosureDeclaration[]
@@ -93,8 +93,6 @@ class NovaFile extends Node {
         packageDeclaration = Package.generateDefaultPackage(this)
         importList = new ImportList(this, location)
         classes = new ClassDeclaration[]
-        
-        addDefaultImports()
     }
 	
     public addChild(Node child) {
@@ -119,20 +117,6 @@ class NovaFile extends Node {
         }
     }
     
-    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node {
-    	var node = null
-        
-        until (node) {
-            node = ClassDeclaration.parse(input, this, location, require)
-            node = TraitDeclaration.parse(input, this, location, require)
-            node = InterfaceDeclaration.parse(input, this, location, require)
-            node = Import.parse(input, this, location, require)
-            node = Package.parse(input, this, location, require)
-        }
-        
-        return node
-    }
-    
     public generateTemporaryScopeNode() -> Node {
         return new ClassDeclaration(this)
     }
@@ -142,54 +126,7 @@ class NovaFile extends Node {
             classDeclaration :
             imports.firstWhere({ _.className.equals(name) })?.classDeclaration
     
-    addDefaultImports() {
-        for (import in DEFAULT_IMPORTS) {
-            addImport(import, false).used = true
-        }
-    }
-    
-    public addAutoImports() {
-        for (file in packageDeclaration.files.filter({ _ != this })) {
-            for (class in file.classes.filterNull()) {
-                addImport(class.location, false)
-            }
-        }
-    }
-    
-    public addImport(String location, Bool userAdded = true) -> Import {
-        if (containsImport(location)) return null
-        
-        let node = Import.parse("import \"#location\"", this, this.location)
-        
-        if (node) {
-            node.userAdded = userAdded
-            
-            imports.add(node)
-        } else {
-            SyntaxMessage.error("Invalid import location '#location'", this)
-        }
-        
-        return node
-    }
-    
     public containsImport(String location, Bool absoluteLocation = true, Bool aliased = false) -> Bool {
         return false
     }
-    
-    public writePackageDeclaration() =>
-        packageDeclaration ?
-            packageDeclaration.toNova() + "\n\n" :
-            ""
-    
-    public writeImports() =>
-        (let userImports = imports.filter({ _.userAdded })).count > 0 ?
-            userImports.map({ _.toNova() + "\n" }).join() + "\n" :
-            ""
-    
-    public toNova() =>
-        writePackageDeclaration() +
-        writeImports() +
-        classes.map({ _.toNova() }).join("\n")
-    
-    public toString() => file.name
 }

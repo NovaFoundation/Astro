@@ -25,16 +25,4 @@ class Operation extends Value {
         operators = new Operator[]
         operands = new Value[]
     }
-    
-    public writeNova() -> String {
-        var output = ""
-        
-        for (i in 0..operators.count) {
-            output += "#operands[i] #operators[i] "
-        }
-        
-        output += "#operands.last"
-        
-        return output
-    }
 }

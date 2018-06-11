@@ -1,0 +1,7 @@
+package "novex/astro"
+
+import "novex/astro/tree/nodes/NovaFile"
+
+interface FileParserBase {
+    public parse(NovaFile file) -> NovaFile
+}

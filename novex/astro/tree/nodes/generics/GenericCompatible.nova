@@ -9,12 +9,7 @@ import "novex/astro/tree/nodes/Type"
 import "novex/astro/util/CompilerStringFunctions"
 
 trait GenericCompatible extends Node {
-    visible GenericParameter[] genericParameters
-    
-    public writeGenericParameters() =>
-        genericParameters.count > 0 ?
-            "<" + genericParameters.map({ _.toNova() }).join(", ") + ">" :
-            ""
+    visible var GenericParameter[] genericParameters
     
     public cloneTo(GenericCompatible other) => other {
         other.genericParameters = genericParameters

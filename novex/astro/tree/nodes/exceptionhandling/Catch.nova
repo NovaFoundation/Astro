@@ -32,10 +32,4 @@ class Catch extends Node implements ScopeDeclaration {
         
         scope = new Scope(this, location)
     }
-    
-    public writeException() =>
-        exception.toNova() + (variable ? " #variable" : "")
-    
-    public writeNova() =>
-        "catch #{soft ? "all" : ""}".trim() + " (#writeException()) #scope.toNova()"
 }

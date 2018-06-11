@@ -87,5 +87,5 @@ class NodeList<E extends Node> extends Node {
         return node
     }
     
-    public slaughterChildren() => children.forEach(head => head.detach())
+    public slaughterChildren() => children.forEach(limbs => limbs.detach())
 }

@@ -76,14 +76,14 @@ class Astro {
                 
                 parseTimer.stop()
                 
-                outputTimer.start()
+                // outputTimer.start()
                 
-                let separator = "============================="
-                Console.writeLine(tree.root.files
-                    // .filter(file => { file.name == "Console" })
-                    .map(file => { "#separator #file.name #separator\n#{file.toNova().formatIndentation()}" }).join("\n"))
+                // let separator = "============================="
+                // Console.writeLine(tree.root.files
+                //     // .filter(file => { file.name == "String" })
+                //     .map(file => { "#separator #file.name #separator\n#{NodeWriter.toNova().formatIndentation()}" }).join("\n"))
                 
-                outputTimer.stop()
+                // outputTimer.stop()
             } catch (SyntaxErrorException e) {
                 parseTimer.stop()
             }
@@ -103,7 +103,7 @@ class Astro {
                 Console.writeLine("Nova overhead timer: #{System.overheadTimer.duration}ms over #{System.overheadTimer.iterations} iterations")
             }
             
-            Console.log("#Node.staticId nodes created")
+            Console.log("#Node.staticId node#{Node.staticId != 1 ? "s" : ""} created")
         }
         
         return tree

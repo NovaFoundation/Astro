@@ -14,13 +14,13 @@ import "novex/astro/util/Location"
 import "novex/astro/util/CompilerStringFunctions"
 
 class FieldDeclaration extends InstanceDeclaration implements Assignable {
-    String[] extraDeclarations
+    var String[] extraDeclarations
     
-    public Value initializationValue
+    public var Value initializationValue
     
-    visible Value accessorValue
+    visible var Value accessorValue
     
-    visible Bool isTwoWayAccessor = false
+    visible var Bool isTwoWayAccessor = false
     
     visible var AccessorFunction accessor
     visible var MutatorFunction mutator
@@ -63,29 +63,6 @@ class FieldDeclaration extends InstanceDeclaration implements Assignable {
             }
         }
     }
-    
-    public writeInitializationValue() => initializationValue ? " = #initializationValue.toNova()" : ""
-    public writeAccessorValue() =>
-        accessorValue ?
-            (isTwoWayAccessor ? " <=> " : " => ") + accessorValue.toNova() :
-            ""
-    
-    public writePropertyFunctions() => "" {
-        if (accessor || mutator) {
-            var output = " {"
-            
-            if (accessor) {
-                output += "\n" + accessor.writeNova() + "\n"
-            }
-            if (mutator) {
-                output += "\n" + mutator.writeNova() + "\n"
-            }
-            
-            return output + "}"
-        }
-    }
-    
-    public writeNova() => super.writeNova() + writeInitializationValue() + writeAccessorValue() + writePropertyFunctions()
     
     public cloneTo(FieldDeclaration other) => other {
         super.cloneTo(other)

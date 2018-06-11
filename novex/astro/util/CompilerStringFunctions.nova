@@ -713,61 +713,61 @@ extension CompilerStringFunctions {
     }
     
     public findStrings(String this, String[] strings, var Int start = 0, Int direction = 1, Char[] scopeChecks = null) -> Bounds {
-        while (start >= 0 && start < count) {
-            Char c = chars[start]
+    //     while (start >= 0 && start < count) {
+    //         Char c = chars[start]
             
-            if (scopeChecks) {
-                if (scopeChecks.contains('"') && c == '"') {
-                    start = findEndingQuote(start, direction)
+    //         if (scopeChecks) {
+    //             if (scopeChecks.contains('"') && c == '"') {
+    //                 start = findEndingQuote(start, direction)
                     
-                    if (start < 0) return Bounds.EMPTY
+    //                 if (start < 0) return Bounds.EMPTY
                     
-                    start += direction
+    //                 start += direction
                     
-                    continue
-                } else if (scopeChecks.contains('\'') && c == '\'') {
-                    start = findEndingChar(c, start, direction)
+    //                 continue
+    //             } else if (scopeChecks.contains('\'') && c == '\'') {
+    //                 start = findEndingChar(c, start, direction)
 
-                    if (start < 0) return Bounds.EMPTY
+    //                 if (start < 0) return Bounds.EMPTY
                     
-                    start += direction
+    //                 start += direction
                     
-                    continue
-                } else if (scopeChecks.contains('(') && (c == '(' && direction > 0 || c == ')' && direction < 0)) {
-                    start = findEndingMatch(start, '(', ')', direction)
+    //                 continue
+    //             } else if (scopeChecks.contains('(') && (c == '(' && direction > 0 || c == ')' && direction < 0)) {
+    //                 start = findEndingMatch(start, '(', ')', direction)
 
-                    if (start < 0) return Bounds.EMPTY
+    //                 if (start < 0) return Bounds.EMPTY
                     
-                    start += direction
+    //                 start += direction
                     
-                    if (start <= 0 || start >= count) return Bounds.EMPTY
+    //                 if (start <= 0 || start >= count) return Bounds.EMPTY
                     
-                    continue
-                } else if (scopeChecks.contains('[') && (c == '[' && direction > 0 || c == ']' && direction < 0)) {
-                    start = findEndingMatch(start, '[', ']', direction)
+    //                 continue
+    //             } else if (scopeChecks.contains('[') && (c == '[' && direction > 0 || c == ']' && direction < 0)) {
+    //                 start = findEndingMatch(start, '[', ']', direction)
 
-                    if (start < 0) return Bounds.EMPTY
+    //                 if (start < 0) return Bounds.EMPTY
                     
-                    start += direction
+    //                 start += direction
                     
-                    if (start == 0) return Bounds.EMPTY
+    //                 if (start == 0) return Bounds.EMPTY
                     
-                    continue
-                }
-            }
+    //                 continue
+    //             }
+    //         }
             
-            for (str in strings) {
-                for (Int i = 0; i < str.count && start + i < count; i++) {
-                    if (chars[start + i] != str[i]) {
-                        break
-                    } else if (i == str.count - 1) {
-                        return new Bounds(start, start + str.count)
-                    }
-                }
-            }
+    //         for (str in strings) {
+    //             for (Int i = 0; i < str.count && start + i < count; i++) {
+    //                 if (chars[start + i] != str[i]) {
+    //                     break
+    //                 } else if (i == str.count - 1) {
+    //                     return new Bounds(start, start + str.count)
+    //                 }
+    //             }
+    //         }
             
-            start += direction
-        }
+    //         start += direction
+    //     }
         
         return Bounds.EMPTY
     }
@@ -812,52 +812,52 @@ extension CompilerStringFunctions {
     
     public formatIndentation(String this) -> String {
         var output = ""
-        var tabs   = ""
+    //     var tabs   = ""
         
-        let matches = Regex.getMatches("[\\}\\{\\)\\(\n]", this)
+    //     let matches = Regex.getMatches("[\\}\\{\\)\\(\n]", this)
         
-        var Int lastIndex = 0
-        var Int lambda    = 0
+    //     var Int lastIndex = 0
+    //     var Int lambda    = 0
         
-        var sameLine = false
-        var inParen  = false
+    //     var sameLine = false
+    //     var inParen  = false
         
-        matches.forEach(match => {
-            let c = this.chars[match.start]
+    //     matches.forEach(match => {
+    //         let c = this.chars[match.start]
             
-            if (c == '{' || c == '(') {
-                if (inParen && c == '{') {
-                    lambda++
-                    return
-                }
+    //         if (c == '{' || c == '(') {
+    //             if (inParen && c == '{') {
+    //                 lambda++
+    //                 return
+    //             }
                 
-                tabs += "\t"
+    //             tabs += "\t"
                 
-                inParen = c == '('
-                sameLine = true
-            } else if (c == '}' || c == ')') {
-                if (lambda > 0 && c == ')') {
-                    lambda--
-                } else if (tabs.count > 0) {
-                    tabs = tabs.substring(1)
-                }
+    //             inParen = c == '('
+    //             sameLine = true
+    //         } else if (c == '}' || c == ')') {
+    //             if (lambda > 0 && c == ')') {
+    //                 lambda--
+    //             } else if (tabs.count > 0) {
+    //                 tabs = tabs.substring(1)
+    //             }
                 
-                inParen = inParen && c != ')'
+    //             inParen = inParen && c != ')'
                 
-                if (output.count > 0 && !sameLine) {
-                    output = output.substring(end: output.count - 1)
-                }
-            } else if (c == '\n') {
-                output += this.substring(lastIndex, match.start) + "\n" + tabs
+    //             if (output.count > 0 && !sameLine) {
+    //                 output = output.substring(end: output.count - 1)
+    //             }
+    //         } else if (c == '\n') {
+    //             output += this.substring(lastIndex, match.start) + "\n" + tabs
                 
-                lastIndex = match.start + 1
+    //             lastIndex = match.start + 1
                 
-                sameLine = false
-            }
-        })
+    //             sameLine = false
+    //         }
+    //     })
         
-        output += tabs + substring(lastIndex)
+    //     output += tabs + substring(lastIndex)
         
-        return output
+    //     return output
     }
 }

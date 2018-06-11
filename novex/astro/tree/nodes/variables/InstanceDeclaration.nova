@@ -12,10 +12,10 @@ import "novex/astro/util/CompilerStringFunctions"
 /// since: 
 /// version: 
 class InstanceDeclaration extends VariableDeclaration {
-    public Bool isStatic = false
+    public var Bool isStatic = false
     visible Bool isInstance => !isStatic
     
-    public String visibility = ""
+    public var String visibility = ""
     
     public Bool isPublic => visibility == "public"
     public Bool isPrivate => visibility.count == 0 || visibility == "private"

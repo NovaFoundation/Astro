@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8535a7e5-f480-4de2-8bfa-9454b647cff7" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Astro.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/Astro.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/Astro.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/SyntaxMessage.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/SyntaxMessage.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/StatementIterator.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/StatementIterator.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/SyntaxTree.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/SyntaxTree.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Abstractable.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Abstractable.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Accessible.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Accessible.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/ArgumentList.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/ArgumentList.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/ArrayType.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/ArrayType.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Cast.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Cast.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/ClassDeclaration.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/ClassDeclaration.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/ExternalBlock.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/ExternalBlock.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Identifier.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Identifier.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Import.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Import.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Literal.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Literal.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Node.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Node.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/NodeList.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/NodeList.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/NovaFile.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/NovaFile.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/NumericRange.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/NumericRange.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Package.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Package.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Priority.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Priority.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Program.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Program.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Return.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Return.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Scope.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Scope.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/ScopeDeclaration.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/ScopeDeclaration.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/StaticClassReference.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/StaticClassReference.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Type.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Type.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/Value.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/Value.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AbstractAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AbstractAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Annotatable.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Annotatable.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Annotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Annotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AutoFinalAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AutoFinalAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AutoPureAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AutoPureAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/FinalAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/FinalAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/ImmutableAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/ImmutableAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/ImpureAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/ImpureAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Modifier.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Modifier.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/NativeAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/NativeAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/OverrideAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/OverrideAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/PrivateAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/PrivateAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/PublicAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/PublicAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/PureAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/PureAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/StaticAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/StaticAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/TargetAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/TargetAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/VisibleAnnotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/annotations/VisibleAnnotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/arrays/ArrayAccess.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/arrays/ArrayAccess.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/controlstructures/ElseStatement.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/controlstructures/ElseStatement.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/controlstructures/IfStatement.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/controlstructures/IfStatement.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/controlstructures/loops/ForEachLoop.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/controlstructures/loops/ForEachLoop.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/controlstructures/loops/WhileLoop.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/controlstructures/loops/WhileLoop.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/exceptionhandling/Catch.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/exceptionhandling/Catch.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/exceptionhandling/Throw.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/exceptionhandling/Throw.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/exceptionhandling/Try.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/exceptionhandling/Try.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/AccessorFunction.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/AccessorFunction.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/ArrayInstantiation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/ArrayInstantiation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/BodyFunction.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/BodyFunction.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/CallableFunction.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/CallableFunction.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/Constructor.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/Constructor.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/EmptyArrayBracket.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/EmptyArrayBracket.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/FunctionCall.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/FunctionCall.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/FunctionDeclaration.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/FunctionDeclaration.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/Instantiation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/Instantiation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/MutatorFunction.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/MutatorFunction.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/ObjectNotation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/ObjectNotation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/ObjectNotationProperty.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/ObjectNotationProperty.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/Parameter.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/Parameter.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/ParameterList.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/ParameterList.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/PropertyFunction.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/PropertyFunction.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/closures/ClosureDeclaration.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/closures/ClosureDeclaration.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/closures/LambdaExpression.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/functions/closures/LambdaExpression.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/generics/GenericArgument.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/generics/GenericArgument.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/generics/GenericCompatible.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/generics/GenericCompatible.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/generics/GenericParameter.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/generics/GenericParameter.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/ElvisOperation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/ElvisOperation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/Operation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/Operation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/Operator.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/Operator.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/TernaryOperation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/TernaryOperation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/UnaryOperation.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/operations/UnaryOperation.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/ArrayBracketOverload.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/ArrayBracketOverload.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/FieldDeclaration.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/FieldDeclaration.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/ImplicitDeclaration.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/ImplicitDeclaration.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/InstanceDeclaration.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/InstanceDeclaration.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/Variable.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/Variable.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/VariableDeclaration.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/tree/nodes/variables/VariableDeclaration.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/util/Bounds.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/util/Bounds.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/util/CompilerStringFunctions.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/util/CompilerStringFunctions.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/util/FileUtils.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/util/FileUtils.nova" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/novex/astro/util/Location.nova" beforeDir="false" afterPath="$PROJECT_DIR$/novex/astro/util/Location.nova" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="AbstractAnnotation.nova" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AbstractAnnotation.nova">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="Annotatable.nova" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Annotatable.nova">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="Annotation.nova" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Annotation.nova">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-195" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AutoFinalAnnotation.nova" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AutoFinalAnnotation.nova">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="AutoPureAnnotation.nova" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AutoPureAnnotation.nova">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="FinalAnnotation.nova" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/FinalAnnotation.nova">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="ImmutableAnnotation.nova" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/ImmutableAnnotation.nova">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="ImpureAnnotation.nova" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/ImpureAnnotation.nova">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="Modifier.nova" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Modifier.nova">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-110" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Astro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Astro" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Astro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Astro" type="462c0819:PsiDirectoryNode" />
+              <item name="novex" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Astro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Astro" type="462c0819:PsiDirectoryNode" />
+              <item name="novex" type="462c0819:PsiDirectoryNode" />
+              <item name="astro" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Astro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Astro" type="462c0819:PsiDirectoryNode" />
+              <item name="novex" type="462c0819:PsiDirectoryNode" />
+              <item name="astro" type="462c0819:PsiDirectoryNode" />
+              <item name="tree" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Astro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Astro" type="462c0819:PsiDirectoryNode" />
+              <item name="novex" type="462c0819:PsiDirectoryNode" />
+              <item name="astro" type="462c0819:PsiDirectoryNode" />
+              <item name="tree" type="462c0819:PsiDirectoryNode" />
+              <item name="nodes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Astro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Astro" type="462c0819:PsiDirectoryNode" />
+              <item name="novex" type="462c0819:PsiDirectoryNode" />
+              <item name="astro" type="462c0819:PsiDirectoryNode" />
+              <item name="tree" type="462c0819:PsiDirectoryNode" />
+              <item name="nodes" type="462c0819:PsiDirectoryNode" />
+              <item name="annotations" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="$USER_HOME$/.nvm/versions/node/v4.2.2/bin/node" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8535a7e5-f480-4de2-8bfa-9454b647cff7" name="Default" comment="" />
+      <created>1528601680406</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1528601680406</updated>
+      <workItem from="1528601681953" duration="642000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="642000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="right" id="Database" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AbstractAnnotation.nova">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Annotatable.nova">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Annotation.nova">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-195" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AutoFinalAnnotation.nova">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/AutoPureAnnotation.nova">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/FinalAnnotation.nova">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/ImmutableAnnotation.nova">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/ImpureAnnotation.nova">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/novex/astro/tree/nodes/annotations/Modifier.nova">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-110" />
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

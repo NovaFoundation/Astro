@@ -174,32 +174,8 @@ class Node implements Annotatable {
             new ValidationResult(this)*/
     }
     
-    public parseString(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node {
-        var Node node = null
-        
-        until (node) {
-            node = Comment.parse(input, parent, location: location, require: false)
-            node = ExternalBlock.parse(input, parent, location: location, require: false)
-            node = parseStatement(input, parent, location: location, require: false)
-        }
-        
-        return node
-    }
-    
-    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node => null {
-        throw new UnimplementedOperationException("#this.class does not implement parseStatement #locationInfo")
-    }
-    
     public generateTemporaryScopeNode() -> Node =>
         throw new UnimplementedOperationException("#this.class does not implement generateTemporaryScopeNode #locationInfo")
-    
-    public static strictParse(action()) {
-        try {
-            action()
-        } catch all (InvalidParseException e) {
-            Console.log(e)
-        }
-    }
     
     public static catchSyntaxErrors(action()) {
         try {
@@ -240,17 +216,4 @@ class Node implements Annotatable {
     
     public replace(Node toReplace, Node replacement) => false
     public validateTypes() => true
-    
-    public writeAnnotationSeparator() => " "
-    
-    public writeAnnotations() =>
-        annotations && annotations.count > 0 ?
-            annotations.filter({ !_.isModifier }).map({ _.toNova() + writeAnnotationSeparator() }).join() +
-                annotations.filter({ _.isModifier }).map({ _.toNova() + " " }).join() :
-            ""
-    
-    public toNova() -> String => writeAnnotations() + writeNova()
-    
-    public writeNova() => "{{#this.class}}"
-    public toString() => toNova()
 }

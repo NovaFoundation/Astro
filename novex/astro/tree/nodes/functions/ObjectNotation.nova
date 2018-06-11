@@ -24,12 +24,4 @@ class ObjectNotation extends NodeList {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeChildren() =>
-        children.count > 0 ?
-            "\n" + children.map({ _.toNova() + "\n" }).join() :
-            ""
-    
-    public writeNova() =>
-        "{" + writeChildren() + "}"
 }

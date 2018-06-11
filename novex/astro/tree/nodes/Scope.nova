@@ -43,7 +43,7 @@ class Scope extends NodeList {
     
     visible Int depth {
         get {
-            Node current = this
+            var Node current = this
             
             var depth = 0
             
@@ -73,28 +73,5 @@ class Scope extends NodeList {
     
     public generateTemporaryScopeNode() -> Node {
         return new Scope(this)
-    }
-    
-    printPrecedingWhitespace(Node child) =>
-        LADDER_FORM.contains(child.class) ? " " : "\n"
-    
-    childToNova(Node child) =>
-        printPrecedingWhitespace(child) + child.toNova()
-    
-    public writeNova() => writeNova(false)
-    public writeNova(Bool condense) -> String {
-        var output = "{"
-        
-        if (condense && children.count == 1) {
-            output += " " + children.first.toNova() + " "
-        } else if (children.count > 1) {
-            output += children.map(childToNova).join()
-        }
-        
-        if (!condense && children.count > 0) {
-            output += "\n"
-        }
-        
-        return output + "}"
     }
 }

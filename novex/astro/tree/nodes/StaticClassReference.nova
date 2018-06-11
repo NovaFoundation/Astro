@@ -21,6 +21,5 @@ class StaticClassReference extends Identifier implements Accessible {
         super(parent, location)
         
         this.name = name
-        this.type = Type.parse(name)
     }
 }

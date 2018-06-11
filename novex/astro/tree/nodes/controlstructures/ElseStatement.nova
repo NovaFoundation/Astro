@@ -35,7 +35,4 @@ class ElseStatement extends ControlStructure {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeNova() =>
-        "else " + (inlineIf ? inlineIf.toNova() : scope.toNova())
 }

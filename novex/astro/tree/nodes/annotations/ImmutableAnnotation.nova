@@ -24,27 +24,4 @@ class ImmutableAnnotation extends Annotation implements Modifier {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    /// Parse the given input into a ImmutableAnnotation node. If the input cannot be parsed
-    /// into a ImmutableAnnotation node, null is returned.
-    /// 
-    /// #exampleInputs:
-    ///     Example inputs:
-    ///     * 
-    ///     * 
-    ///     * 
-    /// 
-    /// input:    The input string to parse into a ImmutableAnnotation instance.
-    /// parent:   The parent of the ImmutableAnnotation node.
-    /// location: The location of the input text in the source file.
-    /// require:  Whether or not to throw a syntax error if the input could not
-    ///           be parsed.
-    /// return:   The parsed ImmutableAnnotation node, if successful; null otherwise.
-    public static parse(String type, String parameters, Node parent = null, Location location = Location.INVALID, Bool require = true) -> ImmutableAnnotation => null {
-        if (type == "Immutable" && parameters.count == 0) {
-            var node = new ImmutableAnnotation(parent, location)
-            
-            return node
-        }
-    }
 }

@@ -34,15 +34,15 @@ class ClassDeclaration extends InstanceDeclaration implements Abstractable, Gene
             parentFile.packageDeclaration.location + "/" + name :
             name
     
-    public Type extendedClass
-    public Type[] implementedInterfaces = new Type[0]
+    public var Type extendedClass
+    public var Type[] implementedInterfaces = new Type[0]
     
-    public FieldDeclaration[] fields = new FieldDeclaration[]
-    public FunctionDeclaration[] functions = new FunctionDeclaration[]
+    public var FieldDeclaration[] fields = new FieldDeclaration[]
+    public var FunctionDeclaration[] functions = new FunctionDeclaration[]
     
     public immutable Constructor[] constructors => functions.filter({ _.class.isOfType(Constructor) })
     
-    visible ArrayBracketOverload arrayBracketOverload
+    visible var ArrayBracketOverload arrayBracketOverload
     
     visible Bool isPrivate => visibility.count > 0 && super.isPrivate
     visible Bool isPublic => visibility.count == 0 || super.isPublic
@@ -92,9 +92,7 @@ class ClassDeclaration extends InstanceDeclaration implements Abstractable, Gene
         })
     
     public findFunction(String name, Bool searchAncestors = true) -> FunctionDeclaration => null {
-        FunctionDeclaration function
-        
-        if (function = functions.firstWhere({ _.name.equals(name) })) {
+        if (var function = functions.firstWhere({ _.name.equals(name) })) {
             return function
         }
         
@@ -107,52 +105,9 @@ class ClassDeclaration extends InstanceDeclaration implements Abstractable, Gene
         }
     }
     
-    public parseStatement(String input, Node parent = null, Location location = Location.INVALID, Bool require = true) -> Node {
-        Node node = null
-        
-        until (node) {
-            node = Constructor.parse(input, this, location, require)
-            node = BodyFunction.parse(input, this, location, require)
-            node = FieldDeclaration.parse(input, this, location, require)
-            node = ArrayBracketOverload.parse(input, this, location, require)
-        }
-        
-        return node
-    }
-    
     public generateTemporaryScopeNode() -> Node {
         return new BodyFunction(this)
     }
-    
-    public writeHeader() =>
-        "#identifier #{name}#writeGenericParameters() #writeExtension() #writeImplementedInterfaces()".replace(/\s+/, " ").trim()
-    
-    public writeExtension() =>
-        extendedClass ?
-            "extends #extendedClass" :
-            ""
-    
-    public writeImplementedInterfaces() =>
-        implementedInterfaces.count > 0 ?
-            "implements #{implementedInterfaces.join(", ")}" :
-            ""
-    
-    public writeArrayBracketOverload() =>
-        arrayBracketOverload ?
-            "\n" + arrayBracketOverload.toNova() + "\n" :
-            ""
-    
-    public writeFields() => fields.map({ '\n' + _.toNova() }).join() + (fields.count > 0 ? "\n" : "")
-    public writeFunctions() => functions.map({ '\n' + _.toNova() + '\n' }).join()
-    
-    public toNova() =>
-        writeHeader() + " {" +
-        writeArrayBracketOverload() +
-        writeFields() +
-        writeFunctions() + "}"
-    
-    [Override]
-    public toString() => writeHeader()
     
     public cloneTo(ClassDeclaration other) => other {
         super.cloneTo(other)

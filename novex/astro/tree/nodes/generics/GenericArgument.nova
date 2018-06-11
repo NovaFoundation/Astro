@@ -14,9 +14,5 @@ class GenericArgument extends Value {
     /// location: The location of the input text in the source file.
     public construct(Node parent = null, Location location = Location.INVALID, String type) {
         super(parent, location)
-        
-        parseType(type)
     }
-    
-    public writeNova() => type.name
 }

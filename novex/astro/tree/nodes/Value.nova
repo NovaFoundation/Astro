@@ -21,11 +21,11 @@ import "novex/astro/util/CompilerStringFunctions"
 class Value extends Node {
     visible static final Byte VALUE = 1, POINTER = 2, REFERENCE = 3, DOUBLE_POINTER = 4
     
-    public ArrayAccess arrayAccess
+    public var ArrayAccess arrayAccess
     
     public Accessible returnedNode => this
     
-    public Type type <=> type
+    public var Type type <=> type
     
     public Bool isAssignable => this.class.isOfType(Assignable)
     
@@ -47,9 +47,6 @@ class Value extends Node {
         
         this.type = type
     }
-    
-    public writeType() => type.toNova()
-    public writeArrayAccess() => arrayAccess ? arrayAccess.toNova() : ""
     
     public cloneTo(Value other) => other {
         super.cloneTo(other)

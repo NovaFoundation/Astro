@@ -26,7 +26,4 @@ class IfStatement extends ControlStructure {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeNova() =>
-        "if (#condition.toNova()) #scope.toNova()"
 }

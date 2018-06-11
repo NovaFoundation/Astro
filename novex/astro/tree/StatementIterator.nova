@@ -15,13 +15,13 @@ class StatementIterator implements Iterator<String> {
     
     visible String remainingSource => source.substring(position)
     
-    visible Int startNewlineCount, endNewlineCount
-    visible Int startNewlinePosition, endNewlinePosition
-    visible Int startPosition, endPosition, position
+    visible var Int startNewlineCount, endNewlineCount
+    visible var Int startNewlinePosition, endNewlinePosition
+    visible var Int startPosition, endPosition, position
     
-    visible Bool beginsScope, endsScope
+    visible var Bool beginsScope, endsScope
     
-    visible Int scopesEnded
+    visible var Int scopesEnded
     
     Stack<Node> parents
     

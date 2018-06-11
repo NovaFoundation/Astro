@@ -42,20 +42,4 @@ class LambdaExpression extends Value implements CallableFunction, ScopeDeclarati
         this.scope = new Scope(this, location)
         this.parameterList = new ParameterList(this, location)
     }
-    
-    public writeParameters() => "" {
-        if (parameters.count == 1) {
-            return parameters[0].toNova()
-        } else if (parameters.count > 1) {
-            return "(" + parameters.map({ _.toNova() }).join(", ") + ")"
-        }
-    }
-    
-    writeParameterClause() =>
-        parameters.count > 0 ?
-            writeParameters() + " => " :
-            ""
-    
-    public writeNova() =>
-        writeParameterClause() + scope.writeNova(true)
 }

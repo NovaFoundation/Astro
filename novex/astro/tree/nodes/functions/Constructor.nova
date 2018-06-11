@@ -20,12 +20,4 @@ class Constructor extends BodyFunction {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    /*public onAdded(Node parent) {
-        super.onAdded(parent)
-        
-        parent.addChild(new InitializationFunction(this))
-    }*/
-    
-    public writeReturnType() => ""
 }

@@ -13,9 +13,9 @@ import "novex/astro/SyntaxMessage"
 import "novex/astro/util/CompilerStringFunctions"
 
 class BodyFunction extends FunctionDeclaration implements ScopeDeclaration {
-    visible Node inlineBody
+    visible var Node inlineBody
     
-    visible Bool implicitType = false
+    visible var Bool implicitType = false
     
     /// Create a new BodyFunction node.
     /// 
@@ -40,25 +40,6 @@ class BodyFunction extends FunctionDeclaration implements ScopeDeclaration {
     public generateTemporaryScopeNode() -> Node {
         return new Scope(this)
     }
-    
-    public writeReturnType() =>
-        implicitType ?
-            "" :
-            super.writeReturnType()
-    
-    writeInlineBody() =>
-        "=> " + inlineBody.toNova() +
-            (scope.children.count > 0 ?
-                " " + scope.toNova() :
-                "")
-    
-    public writeBody() =>
-        " " + (inlineBody ?
-            writeInlineBody() :
-            scope.toNova())
-    
-    public writeNova() =>
-        writeHeader() + writeBody()
     
     public cloneTo(BodyFunction other) => other {
         super.cloneTo(other)

@@ -20,7 +20,7 @@ import "novex/astro/util/CompilerStringFunctions"
 /// since: 
 /// version: 
 class FunctionCall extends Variable {
-    visible FunctionArgumentList argumentList
+    visible var FunctionArgumentList argumentList
     
     visible Value[] arguments => argumentList.arguments
     
@@ -47,9 +47,4 @@ class FunctionCall extends Variable {
         
         other.argumentList = argumentList
     }
-    
-    public writeName() => name
-    
-    public writeNova() => writeName() + "#argumentList" + writeArrayAccess() + writeAccessedNodes()
-    public toString() => toNova()
 }

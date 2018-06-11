@@ -25,6 +25,4 @@ class NumericRange extends Instantiation {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeNova() => "#{start?.toNova()}..#{end?.toNova()}"
 }

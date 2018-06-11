@@ -10,16 +10,16 @@ class FileUtils {
      * @return The formatted path.
      */
     public static formatPath(String path) -> String {
-        path = path.replace("\\", "/")
+        var formattedPath = path.replace("\\", "/")
         
-        path = formAbsolutePath(path)
+        formattedPath = formAbsolutePath(formattedPath)
         
         if (OS.isWindows) {
-            path = path.removeSurroundingQuotes()
+            formattedPath = formattedPath.removeSurroundingQuotes()
             
-            return "\"#path\""
+            return "\"#formattedPath\""
         } else {
-            return escapeSpaces(path)
+            return escapeSpaces(formattedPath)
         }
     }
     

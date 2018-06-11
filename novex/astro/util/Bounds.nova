@@ -6,8 +6,8 @@ package "novex/astro/util"
 /// since:   v0.2.33 Sep 28, 2014 at 6:28:45 PM
 /// version: v0.2.33 Sep 28, 2014 at 6:28:45 PM
 class Bounds {
-    public Int start
-    public Int end
+    public var Int start
+    public var Int end
     
     visible static Bounds EMPTY = new Bounds(-1, -1)
     

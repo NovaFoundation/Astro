@@ -14,14 +14,12 @@ import "novex/astro/util/CompilerStringFunctions"
 class ImplicitDeclaration extends LocalDeclaration {
     visible Bool isImplicit => true
     
-    visible Value implicitReference
-    
-    visible static Value DEFAULT_IMPLICIT_REFERENCE = new Value(type: Type.parse("Object"))
+    visible var Value implicitReference
     
     public Type type => implicitReference.type
     
-    visible static immutable Class<Modifier>[] IMPLICIT_ANNOTATIONS = [VarAnnotation, LetAnnotation]
-    visible static immutable String[] IMPLICIT_ANNOTATION_ALIASES = IMPLICIT_ANNOTATIONS.reduce((v, a) => (Array)v + a.propertyMap.aliases().toMutable(), new String[0])
+    // visible static immutable Class<Modifier>[] IMPLICIT_ANNOTATIONS = [VarAnnotation, LetAnnotation]
+    // visible static immutable String[] IMPLICIT_ANNOTATION_ALIASES = IMPLICIT_ANNOTATIONS.reduce((v, a) => (Array)v + a.propertyMap.aliases().toMutable(), new String[0])
     
     /// Create a new ImplicitDeclaration node.
     /// 
@@ -32,9 +30,6 @@ class ImplicitDeclaration extends LocalDeclaration {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeType() => ""
-    public writeNova() => name
     
     public cloneTo(ImplicitDeclaration other) => other {
         super.cloneTo(other)

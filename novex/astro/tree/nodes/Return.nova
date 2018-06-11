@@ -24,11 +24,4 @@ class Return extends Node {
         
         this.value = value
     }
-    
-    public writeValue() =>
-        value ?
-            value.toNova() :
-            ""
-    
-    public writeNova() => "return #writeValue()".trim()
 }

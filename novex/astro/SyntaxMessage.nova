@@ -27,12 +27,12 @@ class SyntaxMessage {
             info += (info.count > 0 ? ":" : " at location ") + "- #node.location"
         }
         
-        message += "#info"
+        let messageInfo = "#{message}#{info}"
         
         if (throwException) {
-            throw new SyntaxErrorException(message, node)
+            throw new SyntaxErrorException(messageInfo, node)
         } else {
-            node.program.astro.errors.add(message)
+            node.program.astro.errors.add(messageInfo)
         }
     }
 }

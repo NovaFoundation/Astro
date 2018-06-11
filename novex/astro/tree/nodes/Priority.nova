@@ -26,6 +26,4 @@ class Priority extends Value implements Accessible {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeNova() => "(#{value.toNova()})" + writeArrayAccess() + writeAccessedNodes()
 }

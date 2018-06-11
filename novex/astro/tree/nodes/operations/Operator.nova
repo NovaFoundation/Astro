@@ -111,6 +111,4 @@ class Operator extends Node {
         
         this.value = value
     }
-    
-    public writeNova() => value
 }

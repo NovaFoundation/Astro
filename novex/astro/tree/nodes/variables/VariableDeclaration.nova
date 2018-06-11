@@ -7,7 +7,6 @@ import "novex/astro/util/Location"
 import "novex/astro/tree/nodes/Type"
 import "novex/astro/tree/nodes/Identifier"
 import "novex/astro/tree/nodes/annotations/Modifier"
-import "novex/astro/tree/nodes/annotations/Modifier.ModifierFunctionMap"
 
 import "novex/astro/util/CompilerStringFunctions"
 
@@ -28,8 +27,6 @@ class VariableDeclaration extends Identifier {
         
         
     }
-    
-    public writeNova() => (type ? writeType() + " " : "") + name
     
     public cloneTo(VariableDeclaration other) => other {
         super.cloneTo(other)

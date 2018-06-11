@@ -25,6 +25,4 @@ class ArrayBracketOverload extends Node {
     public generateTemporaryScopeNode() -> Node {
         return new BodyFunction(this)
     }
-    
-    public writeNova() => "this[#{index}]"
 }

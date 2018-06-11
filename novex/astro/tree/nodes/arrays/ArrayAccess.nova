@@ -26,6 +26,4 @@ class ArrayAccess extends Node {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeNova() => dimensions.map({ "[#{_.toNova()}]" }).join()
 }

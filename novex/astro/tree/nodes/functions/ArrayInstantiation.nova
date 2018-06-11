@@ -30,8 +30,4 @@ class ArrayInstantiation extends Instantiation {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeDimensions() => dimensions.map({ "[#{_.toNova()}]" }).join()
-    
-    public writeNova() => "new #arrayType.type.name" + writeDimensions()
 }

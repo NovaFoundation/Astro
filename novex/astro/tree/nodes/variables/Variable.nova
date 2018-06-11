@@ -12,7 +12,7 @@ import "novex/astro/tree/nodes/operations/Assignable"
 import "novex/astro/util/CompilerStringFunctions"
 
 class Variable extends Identifier implements Accessible, Assignable {
-    public VariableDeclaration declaration
+    public var VariableDeclaration declaration
     
     public Type type => declaration?.type
     

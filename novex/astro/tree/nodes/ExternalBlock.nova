@@ -30,13 +30,4 @@ class ExternalBlock extends Node implements ScopeDeclaration {
         
         scope = new Scope(this, location)
     }
-    
-    public writeTargets() =>
-        targets.count > 0 ?
-            targets.map({ " #_" }).join(",") :
-            ""
-    
-    public writeContents() => " {\n#contents\n}"
-    
-    public writeNova() => "external" + writeTargets() + writeContents()
 }

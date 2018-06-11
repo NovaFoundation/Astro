@@ -26,7 +26,4 @@ class Throw extends ExceptionHandler {
     public construct(Node parent = null, Location location = Location.INVALID) {
         super(parent, location)
     }
-    
-    public writeNova() =>
-        "#{soft ? "softly" : ""} throw #exception.toNova()".trim()
 }

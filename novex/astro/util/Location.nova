@@ -17,7 +17,7 @@ class Location {
      * 
      * @return The line number that the Location represents.
      */
-    public Int lineNumber
+    public var Int lineNumber
     
     visible Int fileLineNumber => lineNumber + 1
     
@@ -28,7 +28,7 @@ class Location {
      * @return The character offset that the Location represents on the
      *         specified line number.
      */
-    public Int offset
+    public var Int offset
     
     visible Int fileOffset => offset + 1
     
@@ -39,7 +39,7 @@ class Location {
      * @return The Bounds instance containing the starting and ending
      *         offsets.
      */
-    visible Bounds bounds
+    visible var Bounds bounds
     
     visible static final Location INVALID = new Location(0, 0, 0, 0)
     

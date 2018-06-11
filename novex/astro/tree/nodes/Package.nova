@@ -23,6 +23,4 @@ class Package extends Node {
     
     validateLocation() => true
     validateAlias() => true
-    
-    public writeNova() => location ? "package \"#location\"" : ""
 }

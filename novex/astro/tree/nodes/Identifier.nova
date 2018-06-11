@@ -12,7 +12,7 @@ import "novex/astro/util/CompilerStringFunctions"
 /// since: 
 /// version: 
 class Identifier extends Value implements Accessible, Assignable {
-    public String name
+    public var String name
     
     /// Create a new Identifier node.
     /// 
@@ -23,8 +23,6 @@ class Identifier extends Value implements Accessible, Assignable {
     public construct(Node parent = null, Location location = Location.INVALID, public String name = null) {
         super(parent, location)
     }
-    
-    public writeNova() => name + writeArrayAccess() + writeAccessedNodes()
     
     public cloneTo(Identifier other) => other {
         super.cloneTo(other)

@@ -17,6 +17,9 @@ import "novex/astro/tree/nodes/Node"
 import "novex/astro/tree/nodes/NovaFile"
 import "novex/astro/tree/nodes/ClassDeclaration"
 import "novex/astro/tree/nodes/annotations/Annotation"
+import "novex/astro/FileParserBase"
+
+import "novex/clairvoyant/FileParser"
 
 import "novex/astro/util/CompilerStringFunctions"
 
@@ -28,11 +31,15 @@ class SyntaxTree {
     
     visible HashMap<String, Long> compileTimes = new HashMap<String, Long>()
     
+    visible FileParserBase fileParser
+    
     public construct(Astro astro, Program root) {
         this.astro = astro
         this.root = root
         
         root.tree = this
+        
+        this.fileParser = new FileParser()
     }
     
     public groupFiles() => root.files.map({ return [_] })
@@ -57,7 +64,11 @@ class SyntaxTree {
             
             let timer = new Timer().start()
             
-            let parents = new Stack<Node>([file])
+            let novaFile = fileParser.parse(file)
+            
+            Console.log("Parsed #novaFile")
+            
+            /*let parents = new Stack<Node>([file])
             
             let statements = file.source.getStatements(parents)
             file.statements = statements
@@ -149,24 +160,26 @@ class SyntaxTree {
             
             Console.log("#file took #{timer.stop().duration}ms")
             
-            Thread.sync({ compileTimes[file.fileLocation] = timer.duration })
+            Thread.sync({ compileTimes[file.fileLocation] = timer.duration })*/
+            
+            
         })
     }
     
-    public static searchAnnotations(var String statement) -> AnnotationSearchResult {
-        let result = new AnnotationSearchResult(statement)
-        var annotation = Annotation.parse(input: statement, require: false)
+    // public static searchAnnotations(var String statement) -> AnnotationSearchResult {
+    //     let result = new AnnotationSearchResult(statement)
+    //     var annotation = Annotation.parse(input: statement, require: false)
         
-        while (annotation && statement.count > 0) {
-            statement = annotation.getRemainingStatement(statement)
-            result.annotations.add(annotation)
-            result.remainingStatement = statement
+    //     while (annotation && statement.count > 0) {
+    //         statement = annotation.getRemainingStatement(statement)
+    //         result.annotations.add(annotation)
+    //         result.remainingStatement = statement
             
-            // Console.writeLine("Parsed Annotation #annotation")
+    //         // Console.writeLine("Parsed Annotation #annotation")
             
-            if (statement.count > 0) annotation = Annotation.parse(statement)
-        }
+    //         if (statement.count > 0) annotation = Annotation.parse(statement)
+    //     }
         
-        return result
-    }
+    //     return result
+    // }
 }

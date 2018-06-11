@@ -1,9 +1,7 @@
 package "novex/astro/tree/nodes"
 
 trait Abstractable {
-    public Bool isAbstract
-    
-    public writeAbstract() => isAbstract ? "abstract " : ""
+    public var Bool isAbstract
     
     public cloneTo(Abstractable other) => other {
         other.isAbstract = isAbstract
