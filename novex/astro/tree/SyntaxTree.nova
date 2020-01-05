@@ -19,7 +19,7 @@ import "novex/astro/tree/nodes/ClassDeclaration"
 import "novex/astro/tree/nodes/annotations/Annotation"
 import "novex/astro/FileParserBase"
 
-import "novex/clairvoyant/FileParser"
+import "novex/nebula/FileParser"
 
 import "novex/astro/util/CompilerStringFunctions"
 
@@ -60,13 +60,15 @@ class SyntaxTree {
     
     public formTree() {
         processFiles(file => {
-            Console.log("Forming tree for file '#file'")
+            Console.log("Forming tree for file '#file.name'")
+            
+            // Console.log("#file.source")
             
             let timer = new Timer().start()
             
             let novaFile = fileParser.parse(file)
             
-            Console.log("Parsed #novaFile")
+            // Console.log("Parsed #novaFile")
             
             /*let parents = new Stack<Node>([file])
             

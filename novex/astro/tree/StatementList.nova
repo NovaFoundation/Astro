@@ -1,0 +1,20 @@
+package "novex/astro/tree"
+
+import "nova/datastruct/list/NoSuchElementException"
+import "nova/datastruct/list/Iterator"
+import "nova/datastruct/list/Stack"
+import "nova/datastruct/list/List"
+import "nova/regex/Pattern"
+
+import "novex/astro/util/CompilerStringFunctions"
+import "novex/astro/tree/nodes/Node"
+
+class StatementList implements List<String> {
+    visible StatementIterator iterator => new StatementIterator(source, parents)
+    
+    public construct(private String source, private Stack<Node> parents) {}
+    
+    public override reverse() -> StatementList {
+        throw Exception("No")
+    }
+}
