@@ -129,4 +129,11 @@ class NovaFile extends Node {
     public containsImport(String location, Bool absoluteLocation = true, Bool aliased = false) -> Bool {
         return false
     }
+    
+    override public toString() =>
+        "NovaFile #name: {\n
+            location: #fileLocation,\n
+            package: #packageDeclaration,\n
+            imports: #imports\n
+        }"
 }
